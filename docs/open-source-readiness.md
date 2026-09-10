@@ -37,13 +37,14 @@ change. The clean snapshot removes those surfaces from the publication path:
 
 ## Maintainer review
 
-- [ ] Confirm that QVerisAI is authorized to license every tracked file.
+- [x] Repository owner confirmed QVerisAI's authority to license the approved
+      public snapshot; see [v0.1.0 release approval](release-approval-v0.1.0.md).
 - [x] Use public development Goldens and externally controlled private
       holdouts/Oracles as the publication boundary.
 - [x] Defer historical performance reports to a separately reviewed release.
 - [ ] Confirm that market-data tasks contain instructions and acceptance specs,
       not restricted raw provider payloads.
-- [ ] Validate the Apache-2.0 and CC BY 4.0 licensing boundary with the repository owner.
+- [x] Repository owner validated the Apache-2.0 and CC BY 4.0 licensing boundary.
 
 ## Rename and publication
 
@@ -51,9 +52,9 @@ change. The clean snapshot removes those surfaces from the publication path:
 - [x] Update repository links and contamination controls to
       `QVerisAI/qveris-agent-benchmarks`.
 - [x] Tag private `v0.1.0-rc.1` after the complete multi-version validation.
-- [ ] Change visibility only after an explicit owner go/no-go review.
+- [x] Repository owner approved the Public visibility change on 2026-09-10.
 - [ ] Verify an anonymous clone, documentation links, CI, and security reporting
       after publication.
 
-The repository is not approved for public visibility while licensing or the
-final visibility checkpoint remains open.
+The release is approved. Publication is complete only after the visibility
+change and anonymous-clone verification succeed.

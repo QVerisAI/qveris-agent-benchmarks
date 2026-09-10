@@ -19,8 +19,9 @@ audit therefore applies to the private source archive, not to the history of
 the clean publication repository. See
 [clean snapshot provenance](clean-snapshot-provenance.md) for the included and
 excluded surfaces. Historical reports were also deferred to a separately
-reviewed release. Licensing and the final public visibility checkpoint remain
-open.
+reviewed release. The repository owner approved licensing and the public
+visibility change on 2026-09-10; the approval is recorded in
+[the v0.1.0 release approval](release-approval-v0.1.0.md).
 
 ## Inventory and findings
 

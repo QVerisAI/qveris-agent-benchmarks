@@ -2,7 +2,6 @@
 
 import { execFileSync } from "node:child_process";
 import { existsSync, readFileSync } from "node:fs";
-import { extname } from "node:path";
 
 const root = new URL("../", import.meta.url);
 const args = new Set(process.argv.slice(2));
@@ -77,52 +76,49 @@ const privatePathCommits = new Set([
   ...historyMatches(["/sec", "ure/"]),
   ...historyMatches(["/(Us", "ers|ho", "me)/[^/[:space:]]+/"]),
 ]);
-const secretSignatureCommits = new Set([
-  ...historyMatches(["s", "k-[A-Za-z0-9_-]{20,}"]),
-  ...historyMatches(["BEGIN ", "(RSA |EC |OPENSSH )?PRIVATE KEY"]),
-  ...historyMatches(["gh", "[pousr]_[A-Za-z0-9]{20,}"]),
-  ...historyMatches(["AK", "IA[0-9A-Z]{16}"]),
-]);
+const secretPatterns = [
+  ["s", "k-[A-Za-z0-9_-]{20,}"],
+  ["BEGIN ", "(RSA |EC |OPENSSH )?PRIVATE KEY"],
+  ["gh", "[pousr]_[A-Za-z0-9]{20,}"],
+  ["AK", "IA[0-9A-Z]{16}"],
+];
+const secretSignatureCommits = new Set(
+  secretPatterns.flatMap((parts) => historyMatches(parts)),
+);
 const knownSyntheticSecrets = [
   "sk-test_12345678901234567890",
   "skyclaw-secret-token",
 ];
-const textExtensions = new Set([
-  "",
-  ".cff",
-  ".csv",
-  ".env",
-  ".js",
-  ".json",
-  ".jsonl",
-  ".md",
-  ".mjs",
-  ".py",
-  ".sh",
-  ".toml",
-  ".txt",
-  ".yaml",
-  ".yml",
-]);
-const unexplainedCurrentSecretFiles = tracked.filter((path) => {
-  if (!textExtensions.has(extname(path).toLowerCase())) return false;
-  let content = readFileSync(new URL(path, root), "utf8");
-  for (const value of knownSyntheticSecrets) content = content.replaceAll(value, "<synthetic>");
-  return [
-    ["s", "k-[A-Za-z0-9_-]{20,}"],
-    ["BEGIN ", "(?:RSA |EC |OPENSSH )?PRIVATE KEY"],
-    ["gh", "[pousr]_[A-Za-z0-9]{20,}"],
-    ["AK", "IA[0-9A-Z]{16}"],
-  ].some((parts) => new RegExp(parts.join(""), "u").test(content));
-});
-const commitCount = Number(git(["rev-list", "--count", "--all"])) || 0;
-const syntheticOnlyRootCommit =
-  commitCount === 1 &&
-  secretSignatureCommits.size > 0 &&
-  unexplainedCurrentSecretFiles.length === 0;
-const secretSignatureCommitsRequiringClassification = syntheticOnlyRootCommit
-  ? 0
-  : secretSignatureCommits.size;
+function commitContainsUnexplainedSecret(commit) {
+  const paths = new Set();
+  for (const parts of secretPatterns) {
+    const matches = lines(
+      git(["grep", "-I", "-l", "-E", parts.join(""), commit, "--"], {
+        allowFailure: true,
+      }),
+    );
+    for (const match of matches) {
+      const prefix = `${commit}:`;
+      paths.add(match.startsWith(prefix) ? match.slice(prefix.length) : match);
+    }
+  }
+
+  return [...paths].some((path) => {
+    let content = git(["show", `${commit}:${path}`], { allowFailure: true });
+    for (const value of knownSyntheticSecrets) {
+      content = content.replaceAll(value, "<synthetic>");
+    }
+    return secretPatterns.some((parts) =>
+      new RegExp(parts.join("").replace("(RSA ", "(?:RSA "), "u").test(content),
+    );
+  });
+}
+
+const unexplainedSecretCommits = new Set(
+  [...secretSignatureCommits].filter((commit) => commitContainsUnexplainedSecret(commit)),
+);
+const secretSignatureCommitsRequiringClassification = unexplainedSecretCommits.size;
+const syntheticSecretCommits = secretSignatureCommits.size - unexplainedSecretCommits.size;
 const shallow = git(["rev-parse", "--is-shallow-repository"]) === "true";
 const manifestPresent = existsSync(new URL("benchmarks/publication-manifest.json", root));
 let manifestStatus = "missing";
@@ -166,9 +162,7 @@ const report = {
     private_path_or_internal_url_commits: privatePathCommits.size,
     secret_signature_commits_requiring_classification:
       secretSignatureCommitsRequiringClassification,
-    synthetic_test_signature_commits: syntheticOnlyRootCommit
-      ? secretSignatureCommits.size
-      : 0,
+    synthetic_test_signature_commits: syntheticSecretCommits,
   },
   tracked_publication_material: {
     result_roots: resultRoots,

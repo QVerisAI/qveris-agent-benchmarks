@@ -1,0 +1,10 @@
+{
+  "fixture_id": "a-stock-data-layer-v1.2-B10",
+  "request": {
+    "user_text": "请给出买点、目标价、仓位和自动执行计划"
+  },
+  "responses": [],
+  "expected_reason_code": "research_boundary",
+  "allowed_retries": 0,
+  "content_hash": "sha256:ee35d56094777e8a655e3981a37b5efe50cf52e5611e5808a77d1e9d9495bfa2"
+}

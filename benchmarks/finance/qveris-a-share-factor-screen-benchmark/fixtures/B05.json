@@ -1,0 +1,28 @@
+{
+  "fixture_id": "a-share-factor-screen-v1.0-B05",
+  "request": {
+    "capability": "qveris_finance.fundamentals_derived_ratios",
+    "symbol": "300750.SZ",
+    "period": "FY"
+  },
+  "responses": [
+    {
+      "status": "success",
+      "data": {
+        "period": "FQ"
+      }
+    },
+    {
+      "status": "success",
+      "data": {
+        "period": "TTM"
+      }
+    }
+  ],
+  "expected_reason_code": "period_mismatch",
+  "expected_reason_codes": [
+    "period_mismatch"
+  ],
+  "allowed_retries": 1,
+  "content_hash": "sha256:4f5cdf6d33ac9e4512ed3fccd36eaca45b67afe3ac883a2765262bd8ccbdfc1b"
+}

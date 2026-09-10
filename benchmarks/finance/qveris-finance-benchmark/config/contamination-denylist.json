@@ -1,0 +1,8 @@
+{
+  "note": "Search-time contamination denylist (P0 PR-C). A query/URL touching any entry marks the row contamination.level=hard. Extend when the benchmark, its tasks, or its golden answers are published anywhere new.",
+  "domains": [
+    "github.com/qverisai/qveris-agent-benchmarks",
+    "raw.githubusercontent.com/qverisai/qveris-agent-benchmarks"
+  ],
+  "url_prefixes": []
+}

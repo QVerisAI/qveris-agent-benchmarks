@@ -1,0 +1,14 @@
+{
+  "fixture_id": "alphaear-market-intelligence-v2.2-AE-B04",
+  "request": {
+    "web_evidence_fixture": true,
+    "user_text": "单条搜索摘要，无正文"
+  },
+  "responses": [],
+  "expected_reason_code": "sentiment_insufficient",
+  "expected_reason_codes": [
+    "sentiment_insufficient"
+  ],
+  "allowed_retries": 0,
+  "content_hash": "sha256:f871b263ce2e766a4622fc6571c281e259cd9f5d46803fac80f178da3f18f81e"
+}

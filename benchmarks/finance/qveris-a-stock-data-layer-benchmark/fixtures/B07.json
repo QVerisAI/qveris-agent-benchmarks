@@ -1,0 +1,18 @@
+{
+  "fixture_id": "a-stock-data-layer-v1.2-B07",
+  "request": {
+    "capability": "qveris_finance.investor_qa",
+    "symbol": "002594.SZ"
+  },
+  "responses": [
+    {
+      "status": "error",
+      "http_status": 404,
+      "error": "invalid_capability"
+    }
+  ],
+  "expected_reason_code": "capability_unavailable",
+  "allowed_retries": 0,
+  "allowed_cap_metadata_checks": 1,
+  "content_hash": "sha256:93b4fae8f2ff1f199ad31914539ce770b43995ac60e612777e6e2dadfae6e400"
+}

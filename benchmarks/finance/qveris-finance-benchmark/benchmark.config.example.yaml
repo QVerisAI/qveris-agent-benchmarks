@@ -1,0 +1,78 @@
+# QVeris Finance Benchmark — Configuration
+# Copy to benchmark.config.yaml and fill in your values.
+# CLI flags override config values. Secrets should use env var references.
+
+# --- Agent Configuration ---
+agent:
+  # Built-in types: "codex", "claude" (Claude Code CLI), "http" (generic HTTP API)
+  # For custom agents: set adapter_path to a .mjs file exporting the runner contract.
+  type: claude
+
+  # Claude-specific options
+  command: claude                    # path to claude CLI binary
+  qveris_command: qveris             # path to qveris CLI binary
+
+  # HTTP runner options (baseline-only; uncomment to use)
+  # type: http
+  # name: gpt-4o                     # human-readable name for reports
+  # api_style: openai                # "openai" or "anthropic"
+  # base_url: https://api.openai.com
+  # api_key_env: OPENAI_API_KEY      # env var name holding the API key
+  # model: gpt-4o
+  # max_tokens: 16384
+  # temperature: 0
+  # extra_headers: {}
+  # extra_body: {}
+
+  # Custom runner (uncomment to use)
+  # type: custom
+  # adapter_path: ./my-agent-runner.mjs
+
+# --- Benchmark Run Options ---
+run:
+  variants:                           # which variants to run
+    - baseline
+    - qveris-cli
+    - qveris-mcp
+  task_limit: null                    # null = all tasks, or a number
+  task_ids: []                        # empty = all, or list specific task IDs
+  preset: null                        # null | "quick" (10 tasks) | "full" (50 tasks)
+  timeout_ms: 1800000                 # per-task timeout (30 min default)
+  resume: false                       # resume a previous interrupted run
+  run_dir: null                       # null = auto-generate, or path to resume
+  skip_unsupported_variants: false    # true = skip variants unsupported by the selected runner
+
+# --- Grading Options ---
+grade:
+  skip: false                         # skip grading entirely
+  judge:
+    enabled: true                     # use LLM judge (Layer 2 scoring)
+    # Judge API config — reads from env vars by default:
+    #   ANTHROPIC_BASE_URL, ANTHROPIC_API_KEY, ANTHROPIC_JUDGE_MODEL
+    # Override here if needed:
+    base_url_env: ANTHROPIC_BASE_URL
+    api_key_env: ANTHROPIC_API_KEY
+    model_env: ANTHROPIC_JUDGE_MODEL
+    # Direct values (override env vars):
+    # base_url: https://api.deepseek.com/anthropic
+    # model: deepseek-v4-pro
+    timeout_ms: 120000
+    retries: 5
+    require: false                    # true = fail run if judge errors out
+
+# --- Report Options ---
+report:
+  markdown: true                      # generate REPORT.md per variant
+  comparison: true                    # generate cross-variant comparison
+  badcase: true                       # generate badcase analysis
+  feedback: true                      # generate QVeris product feedback
+  output_dir: null                    # null = default (reports/qveris-finance-benchmark/)
+
+# --- Environment Variables ---
+# Secrets should be in .env file or exported in shell, not here.
+# This section is for non-secret env overrides.
+env:
+  # QVERIS_API_KEY: (set in .env)
+  # QVERIS_BASE_URL: https://api.qveris.ai
+  CLAUDE_RATE_LIMIT_RETRIES: "3"
+  CLAUDE_RATE_LIMIT_BACKOFF_MS: "30000"

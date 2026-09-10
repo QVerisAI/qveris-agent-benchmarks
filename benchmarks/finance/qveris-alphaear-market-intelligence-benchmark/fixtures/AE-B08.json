@@ -1,0 +1,31 @@
+{
+  "fixture_id": "alphaear-market-intelligence-v2.2-AE-B08",
+  "request": {
+    "capability": "qveris_finance.ref_symbology",
+    "symbol": "600519.SH",
+    "controls": {
+      "max_calls": 2
+    }
+  },
+  "responses": [
+    {
+      "status": "success",
+      "data": {
+        "symbol": "600519.SH"
+      }
+    },
+    {
+      "status": "success",
+      "data": {
+        "company": "贵州茅台"
+      }
+    }
+  ],
+  "expected_reason_code": "budget_exhausted",
+  "expected_reason_codes": [
+    "budget_exhausted"
+  ],
+  "allowed_retries": 0,
+  "max_calls": 2,
+  "content_hash": "sha256:27d6c9c152b3ea3961d0ba3c824c266d38c6b1079063defc99a84a95197b8abd"
+}

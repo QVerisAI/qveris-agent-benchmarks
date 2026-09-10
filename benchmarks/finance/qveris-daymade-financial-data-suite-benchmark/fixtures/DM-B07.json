@@ -1,0 +1,15 @@
+{
+  "fixture_id": "daymade-financial-data-suite-v2.2-DM-B07",
+  "request": {
+    "capability": null,
+    "web_evidence_fixture": true,
+    "user_text": "Company update AI（仅摘要）"
+  },
+  "responses": [],
+  "expected_reason_code": "qualitative_only",
+  "expected_reason_codes": [
+    "qualitative_only"
+  ],
+  "allowed_retries": 0,
+  "content_hash": "sha256:0082f2d8d5d6c80253843b29dc84f1fed78417dcea037e19997ab7244681750a"
+}

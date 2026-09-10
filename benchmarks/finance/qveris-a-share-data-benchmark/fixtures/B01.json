@@ -1,0 +1,23 @@
+{
+  "fixture_id": "a-share-data-v1.0-B01",
+  "request": {
+    "capability": "qveris_finance.ref_symbology",
+    "symbol": "600519.SH"
+  },
+  "responses": [
+    {
+      "status": "success",
+      "http_status": 200,
+      "data": {
+        "symbol": "510050.SH",
+        "asset_type": "fund"
+      }
+    }
+  ],
+  "expected_reason_code": "semantic_mismatch",
+  "expected_reason_codes": [
+    "semantic_mismatch"
+  ],
+  "allowed_retries": 0,
+  "content_hash": "sha256:1bf0aeb88e0241c01459c0fac54d9a9f85a8ab6fbd449c998559aab137c8bbe3"
+}

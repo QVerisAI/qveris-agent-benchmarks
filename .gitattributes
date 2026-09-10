@@ -1,0 +1,3 @@
+# Force text diffs for source files: a historical NUL byte made GitHub
+# classify provenance.mjs as binary, hiding its patch from review.
+*.mjs text diff

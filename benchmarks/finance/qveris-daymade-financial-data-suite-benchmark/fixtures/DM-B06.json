@@ -1,0 +1,24 @@
+{
+  "fixture_id": "daymade-financial-data-suite-v2.2-DM-B06",
+  "request": {
+    "capability": "qveris_finance.research_analyst_reports",
+    "symbol": "NVDA"
+  },
+  "responses": [
+    {
+      "status": "success",
+      "data": [
+        {
+          "rating": "buy",
+          "target": 999
+        }
+      ]
+    }
+  ],
+  "expected_reason_code": "semantic_mismatch",
+  "expected_reason_codes": [
+    "semantic_mismatch"
+  ],
+  "allowed_retries": 0,
+  "content_hash": "sha256:ff53e82be5eb7a8f633ebc15a32d2d4eb1bc4ca194f4ec718d3717327d38cb5a"
+}

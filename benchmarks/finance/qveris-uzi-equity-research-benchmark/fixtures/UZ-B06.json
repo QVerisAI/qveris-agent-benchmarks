@@ -1,0 +1,20 @@
+{
+  "fixture_id": "uzi-equity-research-v2.2-UZ-B06",
+  "request": {
+    "capability": "qveris_finance.flow_dragon_tiger",
+    "symbol": "002594.SZ"
+  },
+  "responses": [
+    {
+      "status": "success",
+      "data": []
+    }
+  ],
+  "expected_reason_code": "empty_payload",
+  "expected_reason_codes": [
+    "empty_payload",
+    "semantic_mismatch"
+  ],
+  "allowed_retries": 0,
+  "content_hash": "sha256:bc3cf4a91ccbba73fbea2bb6886b62d1f3f3004426c3ecc3710e5e267eedd75d"
+}

@@ -1,0 +1,12 @@
+{
+  "schema_version": "1.0.0",
+  "benchmark_profile": "uzi-equity-research-v2.2",
+  "benchmark_version": "1.0.1",
+  "source_spec": {
+    "title": "BENCHMARK SPECIFICATION · ADAPTED V2.2 个股研究、估值输入、A 股资金流与 trap-risk 审查的双轨金融评测规范",
+    "original_filename": "pasted-text.txt",
+    "content_hash": "sha256:f4653a0d4ac6f28334e83ba892ba0ee96849b3514a249334b845f0a664f46758",
+    "byte_length": 37396
+  },
+  "derivation_policy": "Every generated task maps to the source specification's atomic, workflow, or boundary section and retains its source task identifier."
+}

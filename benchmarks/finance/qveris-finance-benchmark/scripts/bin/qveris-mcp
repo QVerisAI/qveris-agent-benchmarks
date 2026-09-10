@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+set -u
+
+export NODE_OPTIONS="--dns-result-order=ipv4first"
+export QVERIS_TIMEOUT_MS="${QVERIS_TIMEOUT_MS:-60000}"
+export QVERIS_HTTP_TIMEOUT_MS="${QVERIS_HTTP_TIMEOUT_MS:-$QVERIS_TIMEOUT_MS}"
+export QVERIS_MCP_TIMEOUT_MS="${QVERIS_MCP_TIMEOUT_MS:-$QVERIS_HTTP_TIMEOUT_MS}"
+export QVERIS_TIMEOUT_SECONDS="${QVERIS_TIMEOUT_SECONDS:-60}"
+export QVERIS_HTTP_TIMEOUT_SECONDS="${QVERIS_HTTP_TIMEOUT_SECONDS:-$QVERIS_TIMEOUT_SECONDS}"
+export QVERIS_MCP_TIMEOUT_SECONDS="${QVERIS_MCP_TIMEOUT_SECONDS:-$QVERIS_HTTP_TIMEOUT_SECONDS}"
+QVERIS_MCP_PACKAGE=${QVERIS_MCP_PACKAGE:-@qverisai/mcp@0.12.0}
+
+# Resolve the package binary to its real node_modules entrypoint before
+# starting the MCP stdio transport. Running some package versions through the
+# npm bin symlink directly can make their entrypoint guard return early.
+# Only accept
+# candidates that resolve into a node_modules tree so stale developer shims
+# elsewhere on PATH are skipped; resolve symlinks with node realpathSync
+# because BSD readlink has no -f.
+exec npm exec -y --package "$QVERIS_MCP_PACKAGE" -- bash -lc '
+IFS=:
+for dir in $PATH; do
+  candidate="$dir/qveris-mcp"
+  [ -x "$candidate" ] || continue
+  target=$(node -p "require(\"fs\").realpathSync(process.argv[1])" "$candidate" 2>/dev/null) || continue
+  case "$target" in
+    */node_modules/*) exec node "$target" ;;
+  esac
+done
+echo "qveris-mcp package binary not found on PATH" >&2
+exit 127
+'

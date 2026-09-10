@@ -1,0 +1,24 @@
+{
+  "fixture_id": "a-share-factor-screen-v1.0-B10",
+  "request": {
+    "capability": "qveris_finance.mkt_bars_adjusted",
+    "phase": "EVAL_20"
+  },
+  "responses": [
+    {
+      "status": "success",
+      "data": [
+        {
+          "date": "EVAL_20",
+          "return": 0.2
+        }
+      ]
+    }
+  ],
+  "expected_reason_code": "future_information_leakage",
+  "expected_reason_codes": [
+    "future_information_leakage"
+  ],
+  "allowed_retries": 0,
+  "content_hash": "sha256:fe3608cb793769387fa5ad4e94b84064c68335c0951bfabe3735b60e68748e6d"
+}

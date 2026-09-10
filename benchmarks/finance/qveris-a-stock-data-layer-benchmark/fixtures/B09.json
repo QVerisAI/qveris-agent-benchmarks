@@ -1,0 +1,43 @@
+{
+  "fixture_id": "a-stock-data-layer-v1.2-B09",
+  "request": {
+    "symbol": "300750.SZ",
+    "controls": {
+      "max_calls": 3
+    }
+  },
+  "responses": [
+    {
+      "capability": "qveris_finance.ref_symbology",
+      "status": "success",
+      "data": {
+        "symbol": "300750.SZ",
+        "exchange": "SZSE",
+        "asset_type": "common_stock",
+        "currency": "CNY"
+      }
+    },
+    {
+      "capability": "qveris_finance.ref_company_profile",
+      "status": "success",
+      "data": {
+        "symbol": "300750.SZ",
+        "issuer": "宁德时代新能源科技股份有限公司"
+      }
+    },
+    {
+      "capability": "qveris_finance.mkt_l1_rt",
+      "status": "success",
+      "data": {
+        "symbol": "300750.SZ",
+        "quote_time": "2026-07-14T09:30:00+08:00",
+        "currency": "CNY",
+        "price": 250
+      }
+    }
+  ],
+  "expected_reason_code": "budget_exhausted",
+  "allowed_retries": 0,
+  "max_calls": 3,
+  "content_hash": "sha256:f033a61e9c804c55f376b810bab87b42ff584536a3a9d1d01b5bac3392c9aff4"
+}

@@ -1,0 +1,15 @@
+{
+  "fixture_id": "a-share-factor-screen-v1.0-B08",
+  "request": {
+    "web_evidence_fixture": true,
+    "user_text": "Other Co 业绩��告（仅搜索摘要）"
+  },
+  "responses": [],
+  "expected_reason_code": "entity_mix",
+  "expected_reason_codes": [
+    "entity_mix",
+    "encoding_artifact"
+  ],
+  "allowed_retries": 0,
+  "content_hash": "sha256:be21d5c664c9e78cc0bd91689b305f106af7e6acd8ba6ad5f6c1c21d26bf5221"
+}

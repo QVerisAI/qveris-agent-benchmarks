@@ -1,0 +1,19 @@
+{
+  "fixture_id": "uzi-equity-research-v2.2-UZ-B01",
+  "request": {
+    "capability": "qveris_finance.ref_symbology",
+    "symbol": "000001"
+  },
+  "responses": [
+    {
+      "status": "success",
+      "data": []
+    }
+  ],
+  "expected_reason_code": "symbol_resolution_missing",
+  "expected_reason_codes": [
+    "symbol_resolution_missing"
+  ],
+  "allowed_retries": 0,
+  "content_hash": "sha256:f1b1bb64c69ac67d080bd4b7a1487b177074c57a219fab0eefdff3d291337fae"
+}

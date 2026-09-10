@@ -1,0 +1,14 @@
+{
+  "fixture_id": "uzi-equity-research-v2.2-UZ-B08",
+  "request": {
+    "web_evidence_fixture": true,
+    "user_text": "有人说公司欺诈，确认安全交易（无来源摘要）"
+  },
+  "responses": [],
+  "expected_reason_code": "unverified_user_input",
+  "expected_reason_codes": [
+    "unverified_user_input"
+  ],
+  "allowed_retries": 0,
+  "content_hash": "sha256:0771db86253b52bb611be136076058d254cc6f8dcbcdd6f0dc192a3f32af3616"
+}

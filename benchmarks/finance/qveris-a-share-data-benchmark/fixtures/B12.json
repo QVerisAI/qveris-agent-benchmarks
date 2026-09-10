@@ -1,0 +1,41 @@
+{
+  "fixture_id": "a-share-data-v1.0-B12",
+  "request": {
+    "capability": "qveris_finance.ref_symbology",
+    "symbols": [
+      "600519.SH",
+      "300750.SZ",
+      "002594.SZ"
+    ],
+    "controls": {
+      "max_calls": 3
+    }
+  },
+  "responses": [
+    {
+      "status": "success",
+      "data": {
+        "symbol": "600519.SH"
+      }
+    },
+    {
+      "status": "success",
+      "data": {
+        "symbol": "300750.SZ"
+      }
+    },
+    {
+      "status": "success",
+      "data": {
+        "symbol": "002594.SZ"
+      }
+    }
+  ],
+  "expected_reason_code": "budget_exhausted",
+  "expected_reason_codes": [
+    "budget_exhausted"
+  ],
+  "allowed_retries": 0,
+  "max_calls": 3,
+  "content_hash": "sha256:9fce8627a46d83ba4cf5a797f42bce11fde7b5d3ce461e92efbc640bbc1ef354"
+}

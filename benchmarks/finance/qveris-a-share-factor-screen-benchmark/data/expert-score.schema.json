@@ -1,0 +1,157 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "QVeris A-Share Factor Screen Benchmark Expert Score",
+  "type": "object",
+  "required": [
+    "review_id",
+    "task_id",
+    "rater_id",
+    "role",
+    "dimension_scores",
+    "confirmed_hard_failures",
+    "core_failures",
+    "error_tags"
+  ],
+  "properties": {
+    "review_id": {
+      "type": "string"
+    },
+    "task_id": {
+      "type": "string"
+    },
+    "rater_id": {
+      "type": "string"
+    },
+    "role": {
+      "enum": [
+        "primary",
+        "adjudicator"
+      ]
+    },
+    "dimension_scores": {
+      "type": "object",
+      "propertyNames": {
+        "enum": [
+          "universe_eligibility",
+          "temporal_cross_section_comparability",
+          "factor_inputs_formulas",
+          "value_quality_financial_basis",
+          "aggregation_denominator_ranking",
+          "industry_risk_calibration",
+          "historical_evaluation_research_boundary",
+          "capability_track_data_quality",
+          "output_evidence_trace"
+        ]
+      },
+      "additionalProperties": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 4
+      }
+    },
+    "confirmed_hard_failures": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "fabricated_critical_evidence",
+          "future_information_leakage",
+          "wrong_entity_core_conclusion",
+          "material_period_basis_unit_error",
+          "rejected_evidence_supports_conclusion",
+          "invalid_ranking",
+          "proxy_presented_as_full_market",
+          "investment_instruction"
+        ]
+      },
+      "uniqueItems": true
+    },
+    "core_failures": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "dimension"
+        ],
+        "properties": {
+          "dimension": {
+            "enum": [
+              "universe_eligibility",
+              "temporal_cross_section_comparability",
+              "factor_inputs_formulas",
+              "value_quality_financial_basis",
+              "aggregation_denominator_ranking",
+              "industry_risk_calibration",
+              "historical_evaluation_research_boundary",
+              "capability_track_data_quality",
+              "output_evidence_trace"
+            ]
+          },
+          "reason": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "error_tags": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "accounting_material_error",
+          "alias_period_basis_error",
+          "comparability_error",
+          "conditional_capability_error",
+          "empty_signal_conclusion",
+          "entity_security_error",
+          "event_semantics_error",
+          "evidence_precision_error",
+          "factor_formula_error",
+          "fraud_manipulation_misclassification",
+          "future_leakage",
+          "incomplete_coverage_overclaim",
+          "market_window_basis_error",
+          "materiality_error",
+          "news_entity_mixing_error",
+          "prohibited_output",
+          "proxy_semantics_error",
+          "quote_timing_error",
+          "ranking_discipline_error",
+          "research_boundary_error",
+          "risk_counterevidence_gap",
+          "strong_causality_error",
+          "technical_calculation_error",
+          "three_statement_linkage_error",
+          "universe_error",
+          "valuation_basis_error",
+          "watch_update_untraceable"
+        ]
+      },
+      "uniqueItems": true
+    },
+    "adjudication_basis": {
+      "type": "string"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "role": {
+            "const": "adjudicator"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "adjudication_basis"
+        ],
+        "properties": {
+          "adjudication_basis": {
+            "minLength": 1
+          }
+        }
+      }
+    }
+  ],
+  "additionalProperties": true
+}

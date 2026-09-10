@@ -1,0 +1,23 @@
+{
+  "fixture_id": "a-stock-data-layer-v1.2-B08",
+  "request": {
+    "capability": "qveris_finance.flow_sector_capital",
+    "market": "CN"
+  },
+  "responses": [
+    {
+      "status": "success",
+      "data": [
+        {
+          "symbol": "600519.SH",
+          "close": 1420.5,
+          "volume": 100000,
+          "net_amount": 12345
+        }
+      ]
+    }
+  ],
+  "expected_reason_code": "semantic_mismatch",
+  "allowed_retries": 0,
+  "content_hash": "sha256:26356e9f30da0dd0b372535fdd27553c14e08c543c5e02d81e2f2e4eabb1d073"
+}

@@ -1,0 +1,25 @@
+{
+  "fixture_id": "a-share-factor-screen-v1.0-B03",
+  "request": {
+    "capability": "qveris_finance.mkt_bars_adjusted",
+    "symbol": "002594.SZ",
+    "window": "D20"
+  },
+  "responses": [
+    {
+      "status": "success",
+      "data": [
+        {
+          "date": "AS_OF",
+          "close": 111.2
+        }
+      ]
+    }
+  ],
+  "expected_reason_code": "insufficient_observations",
+  "expected_reason_codes": [
+    "insufficient_observations"
+  ],
+  "allowed_retries": 0,
+  "content_hash": "sha256:3a851262924870e3bc207161ed4e8434396eaa84dc765cd40798cec1c382b546"
+}

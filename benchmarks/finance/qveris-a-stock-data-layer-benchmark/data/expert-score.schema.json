@@ -1,0 +1,101 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://qveris.local/benchmark/a-stock-data-layer/expert-score.schema.json",
+  "title": "RUBRIC_V1 blind expert score record",
+  "type": "object",
+  "required": ["task_id", "rater_id", "role", "dimension_scores", "confirmed_hard_failures", "core_failures"],
+  "properties": {
+    "run_id": { "type": ["string", "null"] },
+    "agent": { "type": ["string", "null"] },
+    "variant": { "type": ["string", "null"] },
+    "task_id": { "type": "string" },
+    "rater_id": { "type": "string", "minLength": 1 },
+    "role": { "enum": ["primary", "adjudicator"] },
+    "dimension_scores": {
+      "type": "object",
+      "propertyNames": {
+        "enum": [
+          "factual_accuracy",
+          "accounting_comparability",
+          "statement_profit_quality",
+          "operating_industry",
+          "valuation_capital_markets",
+          "reasoning_causality_materiality",
+          "risk_scenario_calibration"
+        ]
+      },
+      "additionalProperties": { "type": "integer", "minimum": 0, "maximum": 4 }
+    },
+    "confirmed_hard_failures": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "fabricated_critical_evidence",
+          "future_information_leakage",
+          "wrong_entity_core_conclusion",
+          "material_period_basis_unit_error",
+          "rejected_evidence_supports_conclusion",
+          "investment_instruction"
+        ]
+      }
+    },
+    "core_failures": {
+      "type": "array",
+      "items": {
+        "oneOf": [
+          { "type": "string" },
+          {
+            "type": "object",
+            "required": ["dimension", "reason"],
+            "properties": {
+              "dimension": { "type": "string" },
+              "reason": { "type": "string" }
+            },
+            "additionalProperties": false
+          }
+        ]
+      }
+    },
+    "error_tags": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "accounting_material_error",
+          "three_statement_linkage_error",
+          "strong_causality_error",
+          "materiality_error",
+          "valuation_basis_error",
+          "risk_counterevidence_gap",
+          "evidence_precision_error"
+        ]
+      }
+    },
+    "claim_assessments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["claim_id", "supported", "material"],
+        "properties": {
+          "claim_id": { "type": "string" },
+          "supported": { "type": "boolean" },
+          "material": { "type": "boolean" },
+          "evidence_refs": { "type": "array", "items": { "type": "string" } },
+          "notes": { "type": "string" }
+        },
+        "additionalProperties": false
+      }
+    },
+    "materiality_decision": { "enum": ["material", "not_material", "uncertain", null] },
+    "adjudication_basis": { "type": ["string", "null"] },
+    "notes": { "type": "string" }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "role": { "const": "adjudicator" } }, "required": ["role"] },
+      "then": { "required": ["adjudication_basis"], "properties": { "adjudication_basis": { "type": "string", "minLength": 1 } } }
+    }
+  ],
+  "additionalProperties": true
+}

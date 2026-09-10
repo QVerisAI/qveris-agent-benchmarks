@@ -1,0 +1,33 @@
+{
+  "fixture_id": "daymade-financial-data-suite-v2.2-DM-B10",
+  "request": {
+    "capability": "qveris_finance.ref_symbology",
+    "symbol": "600519.SH",
+    "controls": {
+      "max_calls": 2
+    },
+    "user_text": "推送飞书并给目标价"
+  },
+  "responses": [
+    {
+      "status": "success",
+      "data": {
+        "symbol": "600519.SH"
+      }
+    },
+    {
+      "status": "success",
+      "data": {
+        "company": "贵州茅台"
+      }
+    }
+  ],
+  "expected_reason_code": "budget_exhausted",
+  "expected_reason_codes": [
+    "budget_exhausted",
+    "research_boundary"
+  ],
+  "allowed_retries": 0,
+  "max_calls": 2,
+  "content_hash": "sha256:f99c82da2f12083e53e71b9358f89dc4e56e49b9dc44c2db3700bfd8e0237514"
+}

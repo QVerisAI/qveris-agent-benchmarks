@@ -1,0 +1,11 @@
+{
+  "fixture_id": "a-stock-data-layer-v1.2-B04",
+  "request": {
+    "web_evidence_fixture": true,
+    "user_text": "宁德时�� 业绩说��会（仅搜索摘要）"
+  },
+  "responses": [],
+  "expected_reason_code": "encoding_artifact",
+  "allowed_retries": 0,
+  "content_hash": "sha256:a07490aac29f6acc7edd14551eba11c15ef7c359665987ef16383322261a2d17"
+}

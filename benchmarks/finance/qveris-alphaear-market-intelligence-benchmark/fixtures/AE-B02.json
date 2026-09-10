@@ -1,0 +1,25 @@
+{
+  "fixture_id": "alphaear-market-intelligence-v2.2-AE-B02",
+  "request": {
+    "capability": "qveris_finance.mkt_bars_adjusted",
+    "symbol": "688981.SH",
+    "window": "D30"
+  },
+  "responses": [
+    {
+      "status": "success",
+      "data": [
+        {
+          "date": "T0",
+          "close": 50
+        }
+      ]
+    }
+  ],
+  "expected_reason_code": "insufficient_observations",
+  "expected_reason_codes": [
+    "insufficient_observations"
+  ],
+  "allowed_retries": 0,
+  "content_hash": "sha256:0694274faee6bf5a4e9272f361bedae34f24c261e95105c6d4f6f4a558232c1f"
+}

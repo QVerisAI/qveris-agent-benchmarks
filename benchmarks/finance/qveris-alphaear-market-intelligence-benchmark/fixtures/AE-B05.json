@@ -1,0 +1,14 @@
+{
+  "fixture_id": "alphaear-market-intelligence-v2.2-AE-B05",
+  "request": {
+    "web_evidence_fixture": true,
+    "user_text": "公司新闻 battery（仅摘要）"
+  },
+  "responses": [],
+  "expected_reason_code": "qualitative_only",
+  "expected_reason_codes": [
+    "qualitative_only"
+  ],
+  "allowed_retries": 0,
+  "content_hash": "sha256:78c0e8e13fd6fe8cc5012ce44eec795da4f72c93f26e70de9cf4526c90c03195"
+}

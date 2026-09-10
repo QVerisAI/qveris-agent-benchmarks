@@ -1,0 +1,23 @@
+{
+  "fixture_id": "uzi-equity-research-v2.2-UZ-B04",
+  "request": {
+    "capability": "qveris_finance.fundamentals_is",
+    "symbol": "600519.SH",
+    "market": "CN"
+  },
+  "responses": [
+    {
+      "status": "success",
+      "data": {
+        "market": "US",
+        "revenue": 100
+      }
+    }
+  ],
+  "expected_reason_code": "market_support_unverified",
+  "expected_reason_codes": [
+    "market_support_unverified"
+  ],
+  "allowed_retries": 0,
+  "content_hash": "sha256:d35bd546e3bcd16de57120e13ac94862390dc74d19fff0a1918a1fb5bc006271"
+}

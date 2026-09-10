@@ -1,0 +1,27 @@
+{
+  "fixture_id": "a-stock-data-layer-v1.2-B05",
+  "request": {
+    "source": "frozen_open_news_set",
+    "issuer": "宁德时代股份有限公司"
+  },
+  "responses": [
+    {
+      "status": "success",
+      "data": [
+        {
+          "issuer": "宁德时代股份有限公司",
+          "title": "公司公告",
+          "date": "2026-07-01"
+        },
+        {
+          "issuer": "宁德时代新能源科技（海外同名非目标）",
+          "title": "无关行业新闻",
+          "date": "2026-07-02"
+        }
+      ]
+    }
+  ],
+  "expected_reason_code": "semantic_mismatch",
+  "allowed_retries": 0,
+  "content_hash": "sha256:2530493bb0855507e9114cc8ae6020b307e5a16a60cb1a3bd33e2cfa48783d42"
+}

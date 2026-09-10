@@ -1,0 +1,20 @@
+{
+  "fixture_id": "alphaear-market-intelligence-v2.2-AE-B07",
+  "request": {
+    "capability": "qveris_finance.news_clusters",
+    "symbol": "TSLA"
+  },
+  "responses": [
+    {
+      "status": "error",
+      "http_status": 404,
+      "error": "invalid_capability"
+    }
+  ],
+  "expected_reason_code": "capability_unavailable",
+  "expected_reason_codes": [
+    "capability_unavailable"
+  ],
+  "allowed_retries": 0,
+  "content_hash": "sha256:6cfa3135f656afd727e15476b12a361b6cc66a412875cdb0a89cb9ddcb9483c0"
+}

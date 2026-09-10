@@ -1,0 +1,48 @@
+name: Benchmark proposal
+description: Propose a new benchmark suite or a material benchmark expansion.
+title: "benchmark: "
+labels:
+  - benchmark-proposal
+body:
+  - type: textarea
+    id: decision
+    attributes:
+      label: Decision statement
+      description: What concrete product or research decision should this benchmark support?
+    validations:
+      required: true
+  - type: textarea
+    id: users
+    attributes:
+      label: Intended users and exclusions
+      description: Who uses the result, and what claims must the benchmark not support?
+    validations:
+      required: true
+  - type: textarea
+    id: coverage
+    attributes:
+      label: Coverage plan
+      description: Describe task families, difficulty, languages, tools, and failure injections.
+    validations:
+      required: true
+  - type: textarea
+    id: scoring
+    attributes:
+      label: Golden, Oracle, and scoring plan
+      description: Explain scoring dimensions, hard failures, aggregation, and release threshold.
+    validations:
+      required: true
+  - type: textarea
+    id: data
+    attributes:
+      label: Data provenance and license
+      description: Identify sources, redistribution rights, privacy risks, and time sensitivity.
+    validations:
+      required: true
+  - type: textarea
+    id: publication
+    attributes:
+      label: Publication boundary
+      description: What is public, and what must remain a private holdout or restricted artifact?
+    validations:
+      required: true

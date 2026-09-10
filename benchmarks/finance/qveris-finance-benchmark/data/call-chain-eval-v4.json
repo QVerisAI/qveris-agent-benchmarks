@@ -1,0 +1,106 @@
+{
+  "schema_version": "call-chain-eval-v4",
+  "title": "Conditional capability routing and session reuse evaluation",
+  "trials": 3,
+  "runtime_contract": {
+    "agent": "codex",
+    "model": "gpt-5.6-sol",
+    "reasoning_effort": "medium",
+    "toolset": "qveris-canonical-mcp-v1",
+    "client_version": "call-chain-fixture-mcp@4.0.0",
+    "reference_contracts": ["@qverisai/mcp@0.14.3", "@qverisai/openclaw@2026.9.7"],
+    "evidence_mode": "deterministic_fixture",
+    "selective_reruns": false
+  },
+  "gates": {
+    "noninferiority_margins": {
+      "quality_score_points": 3,
+      "task_completion_rate": 0.05,
+      "selection_accuracy": 0.05,
+      "parameter_accuracy": 0.05,
+      "scope_freshness_accuracy": 0.05
+    },
+    "primary_efficiency_metrics": [
+      "model_visible_tool_calls",
+      "qveris_http_requests",
+      "uncached_input_tokens",
+      "elapsed_ms"
+    ],
+    "minimum_primary_efficiency_improvement_pct": 10,
+    "maximum_primary_efficiency_regression_pct": 10,
+    "maximum_provider_attempt_increase_pct": 0,
+    "require_primary_efficiency_ci_nonpositive": true,
+    "blocking_safety_events": [
+      "cache_mismatch",
+      "cross_authorization_reuse",
+      "duplicate_paid_execution",
+      "unknown_execution_replay"
+    ]
+  },
+  "experiments": [
+    {
+      "id": "guidance",
+      "changed_factor": "guidance_profile",
+      "factor_keys": ["guidance_profile", "reuse_mode"],
+      "locked_factor_keys": ["reuse_mode", "toolset", "client_version"],
+      "arms": [
+        {
+          "role": "control",
+          "guidance_profile": "fixed-chain",
+          "reuse_mode": "off",
+          "toolset": "qveris-canonical-mcp-v1",
+          "client_version": "call-chain-fixture-mcp@4.0.0"
+        },
+        {
+          "role": "treatment",
+          "guidance_profile": "conditional",
+          "reuse_mode": "off",
+          "toolset": "qveris-canonical-mcp-v1",
+          "client_version": "call-chain-fixture-mcp@4.0.0"
+        }
+      ]
+    },
+    {
+      "id": "reuse",
+      "changed_factor": "reuse_mode",
+      "factor_keys": ["guidance_profile", "reuse_mode"],
+      "locked_factor_keys": ["guidance_profile", "toolset", "client_version"],
+      "arms": [
+        {
+          "role": "control",
+          "guidance_profile": "conditional",
+          "reuse_mode": "off",
+          "toolset": "qveris-canonical-mcp-v1",
+          "client_version": "call-chain-fixture-mcp@4.0.0"
+        },
+        {
+          "role": "treatment",
+          "guidance_profile": "conditional",
+          "reuse_mode": "session-exact",
+          "toolset": "qveris-canonical-mcp-v1",
+          "client_version": "call-chain-fixture-mcp@4.0.0"
+        }
+      ]
+    }
+  ],
+  "tasks": [
+    {"id":"complete-schema","cluster":"contract","scenario":"complete_schema","experiments":["guidance"]},
+    {"id":"missing-schema","cluster":"contract","scenario":"missing_schema","experiments":["guidance"]},
+    {"id":"zero-parameter","cluster":"contract","scenario":"zero_parameter","experiments":["guidance"]},
+    {"id":"quote-required","cluster":"cost","scenario":"current_quote_required","experiments":["guidance"]},
+    {"id":"unknown-cost","cluster":"cost","scenario":"unknown_cost","experiments":["guidance"]},
+    {"id":"over-budget","cluster":"cost","scenario":"over_budget","experiments":["guidance"]},
+    {"id":"provider-failure","cluster":"recovery","scenario":"provider_failure","experiments":["guidance"]},
+    {"id":"unknown-execution","cluster":"recovery","scenario":"unknown_execution","experiments":["guidance"]},
+    {"id":"provider-comparison","cluster":"selection","scenario":"provider_comparison","experiments":["guidance"]},
+    {"id":"exact-repeat-entity","cluster":"reuse","scenario":"same_capability_new_entity","experiments":["guidance","reuse"]},
+    {"id":"exact-repeat-date","cluster":"reuse","scenario":"same_capability_new_date","experiments":["guidance","reuse"]},
+    {"id":"similar-intent-scope","cluster":"reuse-safety","scenario":"similar_intent_scope_change","experiments":["guidance","reuse"]},
+    {"id":"schema-expired","cluster":"reuse-safety","scenario":"expired_schema","experiments":["guidance","reuse"]},
+    {"id":"authorization-switch","cluster":"reuse-safety","scenario":"authorization_switch","experiments":["reuse"]},
+    {"id":"native-sufficient","cluster":"selection","scenario":"existing_information_sufficient","experiments":["guidance"]},
+    {"id":"native-partial","cluster":"selection","scenario":"existing_information_partial","experiments":["guidance"]},
+    {"id":"not-applicable","cluster":"selection","scenario":"external_tool_not_applicable","experiments":["guidance"]},
+    {"id":"explicit-qveris","cluster":"selection","scenario":"explicit_qveris_request","experiments":["guidance"]}
+  ]
+}

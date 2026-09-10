@@ -1,0 +1,28 @@
+{
+  "fixture_id": "a-share-factor-screen-v1.0-B06",
+  "request": {
+    "capability": "qveris_finance.fundamentals_derived_ratios",
+    "symbol": "300750.SZ"
+  },
+  "responses": [
+    {
+      "status": "error",
+      "http_status": 503,
+      "error": "unavailable"
+    },
+    {
+      "status": "timeout",
+      "error": "timeout"
+    },
+    {
+      "status": "error",
+      "error": "all_candidates_failed"
+    }
+  ],
+  "expected_reason_code": "all_candidates_failed",
+  "expected_reason_codes": [
+    "all_candidates_failed"
+  ],
+  "allowed_retries": 2,
+  "content_hash": "sha256:7b9a2ec2b01d79662fdcfae193ad6963153493369b175c2d46410b7e376a42aa"
+}

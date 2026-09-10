@@ -1,0 +1,25 @@
+{
+  "fixture_id": "a-share-data-v1.0-B10",
+  "request": {
+    "capability": "qveris_finance.flow_sector_capital",
+    "market": "CN"
+  },
+  "responses": [
+    {
+      "status": "success",
+      "data": [
+        {
+          "symbol": "600519.SH",
+          "close": 1400,
+          "volume": 1000
+        }
+      ]
+    }
+  ],
+  "expected_reason_code": "semantic_mismatch",
+  "expected_reason_codes": [
+    "semantic_mismatch"
+  ],
+  "allowed_retries": 0,
+  "content_hash": "sha256:f14b9da50bb856267077a0fe21520de8b5af1b0af86bf659fc4601c240da5e28"
+}

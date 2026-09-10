@@ -1,0 +1,23 @@
+{
+  "fixture_id": "daymade-financial-data-suite-v2.2-DM-B05",
+  "request": {
+    "capability": "qveris_finance.risk_beta_vol",
+    "symbol": "NVDA"
+  },
+  "responses": [
+    {
+      "status": "success",
+      "data": {
+        "beta": null,
+        "growth": null,
+        "shares": null
+      }
+    }
+  ],
+  "expected_reason_code": "missing",
+  "expected_reason_codes": [
+    "missing"
+  ],
+  "allowed_retries": 0,
+  "content_hash": "sha256:9269684956baabbe653d9655f047ba7647890618e21aeed6edaeb5622838c962"
+}

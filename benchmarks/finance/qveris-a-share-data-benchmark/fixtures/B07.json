@@ -1,0 +1,28 @@
+{
+  "fixture_id": "a-share-data-v1.0-B07",
+  "request": {
+    "capability": "qveris_finance.mkt_bars_adjusted",
+    "symbol": "300750.SZ"
+  },
+  "responses": [
+    {
+      "status": "error",
+      "http_status": 503,
+      "error": "unavailable"
+    },
+    {
+      "status": "timeout",
+      "error": "timeout"
+    },
+    {
+      "status": "error",
+      "error": "all_candidates_failed"
+    }
+  ],
+  "expected_reason_code": "all_candidates_failed",
+  "expected_reason_codes": [
+    "all_candidates_failed"
+  ],
+  "allowed_retries": 2,
+  "content_hash": "sha256:8b1a52b9baba431e4406ec93ea9c081053b214280ea0f82cd6545f97d72d3663"
+}

@@ -1,0 +1,25 @@
+{
+  "fixture_id": "a-share-data-v1.0-B04",
+  "request": {
+    "capability": "qveris_finance.mkt_bars_eod",
+    "symbol": "000001.SZ",
+    "window": "D20"
+  },
+  "responses": [
+    {
+      "status": "success",
+      "data": [
+        {
+          "date": "AS_OF",
+          "close": 12.3
+        }
+      ]
+    }
+  ],
+  "expected_reason_code": "insufficient_observations",
+  "expected_reason_codes": [
+    "insufficient_observations"
+  ],
+  "allowed_retries": 0,
+  "content_hash": "sha256:20800bdda5d238fa3070c1b18ff70d2886ae510b07633a28f7fa7c19343e23b9"
+}

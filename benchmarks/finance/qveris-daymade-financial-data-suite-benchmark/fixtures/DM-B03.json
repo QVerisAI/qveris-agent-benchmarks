@@ -1,0 +1,24 @@
+{
+  "fixture_id": "daymade-financial-data-suite-v2.2-DM-B03",
+  "request": {
+    "capability": "qveris_finance.fundamentals_cf",
+    "symbol": "NVDA",
+    "fiscal_period": "FY"
+  },
+  "responses": [
+    {
+      "status": "success",
+      "data": {
+        "cf_net_income": 10,
+        "is_net_income": 1000,
+        "currency": "USD"
+      }
+    }
+  ],
+  "expected_reason_code": "statement_semantic_mismatch",
+  "expected_reason_codes": [
+    "statement_semantic_mismatch"
+  ],
+  "allowed_retries": 0,
+  "content_hash": "sha256:e4c00d6c3b99bd3fee650b473482bb74b935bdd7a6fe6f16bc9f60b4ccfcde04"
+}

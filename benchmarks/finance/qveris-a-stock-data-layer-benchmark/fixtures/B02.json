@@ -1,0 +1,33 @@
+{
+  "fixture_id": "a-stock-data-layer-v1.2-B02",
+  "request": {
+    "capability": "qveris_finance.fundamentals_is",
+    "symbol": "600519.SH",
+    "period": "FY"
+  },
+  "cap_detail": {
+    "supports": [
+      "period",
+      "fiscal_year"
+    ]
+  },
+  "responses": [
+    {
+      "status": "success",
+      "data": {
+        "period_type": "quarter",
+        "period_end": "2026-03-31"
+      }
+    },
+    {
+      "status": "success",
+      "data": {
+        "period_type": "TTM",
+        "period_end": "2026-03-31"
+      }
+    }
+  ],
+  "expected_reason_code": "period_mismatch",
+  "allowed_retries": 1,
+  "content_hash": "sha256:36f28f0e7d181329bac2bf84dd196ecfecea122a232a19bc6173b027ca971243"
+}

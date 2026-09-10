@@ -1,0 +1,22 @@
+{
+  "fixture_id": "a-share-factor-screen-v1.0-B07",
+  "request": {
+    "capability": "qveris_finance.ref_classification_theme",
+    "symbol": "002594.SZ"
+  },
+  "responses": [
+    {
+      "status": "error",
+      "http_status": 404,
+      "error": "invalid_capability"
+    }
+  ],
+  "expected_reason_code": "capability_unavailable",
+  "expected_reason_codes": [
+    "capability_unavailable",
+    "missing"
+  ],
+  "allowed_retries": 0,
+  "allowed_cap_metadata_checks": 1,
+  "content_hash": "sha256:120d5c972a883ab97444854f96d8c47c546059ecb2aa6ede531e8ca42784d332"
+}

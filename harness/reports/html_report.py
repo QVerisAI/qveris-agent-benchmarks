@@ -1,0 +1,2 @@
+"""HTML report generation placeholder."""
+

@@ -1,0 +1,26 @@
+{
+  "fixture_id": "a-share-data-v1.0-B06",
+  "request": {
+    "capability": "qveris_finance.event_calendar_corp",
+    "symbol": "300750.SZ",
+    "window": "EVENT_WINDOW"
+  },
+  "responses": [
+    {
+      "status": "success",
+      "data": [
+        {
+          "issuer": "Other Co",
+          "event_date": "OUTSIDE_EVENT_WINDOW"
+        }
+      ]
+    }
+  ],
+  "expected_reason_code": "semantic_mismatch",
+  "expected_reason_codes": [
+    "semantic_mismatch",
+    "out_of_window_event"
+  ],
+  "allowed_retries": 0,
+  "content_hash": "sha256:003bb56a354003a58a6d30364ce1ffb804a3b8cab26cc4c810f3ae4bf9321c74"
+}

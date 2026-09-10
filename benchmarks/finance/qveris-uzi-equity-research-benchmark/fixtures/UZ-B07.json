@@ -1,0 +1,24 @@
+{
+  "fixture_id": "uzi-equity-research-v2.2-UZ-B07",
+  "request": {
+    "capability": "qveris_finance.flow_northbound",
+    "symbol": "300750.SZ"
+  },
+  "responses": [
+    {
+      "status": "success",
+      "data": [
+        {
+          "scope": "market_total",
+          "date": "WRONG_DATE"
+        }
+      ]
+    }
+  ],
+  "expected_reason_code": "semantic_mismatch",
+  "expected_reason_codes": [
+    "semantic_mismatch"
+  ],
+  "allowed_retries": 0,
+  "content_hash": "sha256:5609d839152fb4222ce9024a6d59db0c3e64c18115369ab7d1c32ad9411b0604"
+}

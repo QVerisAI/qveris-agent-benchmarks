@@ -1,0 +1,29 @@
+{
+  "fixture_id": "uzi-equity-research-v2.2-UZ-B09",
+  "request": {
+    "capability": "qveris_finance.flow_large_order",
+    "symbol": "300750.SZ",
+    "controls": {
+      "max_calls": 2
+    }
+  },
+  "responses": [
+    {
+      "status": "error",
+      "http_status": 503
+    },
+    {
+      "status": "error",
+      "http_status": 404,
+      "error": "invalid_capability"
+    }
+  ],
+  "expected_reason_code": "capability_unavailable",
+  "expected_reason_codes": [
+    "capability_unavailable",
+    "budget_exhausted"
+  ],
+  "allowed_retries": 1,
+  "max_calls": 2,
+  "content_hash": "sha256:756d26b4f2a1e9500b4f9334b0f38aa7a6a436cc068ef5479ca3fb0888e6e30c"
+}

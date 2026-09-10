@@ -1,0 +1,396 @@
+{
+  "rubric_profile": "RUBRIC_V1",
+  "version": "1.0.1",
+  "score": {
+    "financial": 90,
+    "technical": 10,
+    "total": 100
+  },
+  "dimensions": {
+    "factual_accuracy": {
+      "label": "事实与金融数据准确性",
+      "weight": 15,
+      "kind": "financial",
+      "criteria": "主体、证券、时点、数值、单位、币种和数据定义正确；关键事实与冻结证据一致。"
+    },
+    "accounting_comparability": {
+      "label": "会计口径与跨期可比性",
+      "weight": 20,
+      "kind": "financial",
+      "criteria": "FY/FQ/TTM、单季/累计、合并/母公司、期末/期间、准则、重述、复权和交易日口径正确。"
+    },
+    "statement_profit_quality": {
+      "label": "三表勾稽与盈利质量",
+      "weight": 15,
+      "kind": "financial",
+      "criteria": "利润、现金流、资产负债联动；识别非经常性项目、营运资本、现金转换、杠杆和减值风险。"
+    },
+    "operating_industry": {
+      "label": "经营驱动、行业与竞争",
+      "weight": 10,
+      "kind": "financial",
+      "criteria": "从量价、成本、产能、产品/客户结构、行业周期和竞争格局解释经营变化。"
+    },
+    "valuation_capital_markets": {
+      "label": "估值与资本市场解释",
+      "weight": 10,
+      "kind": "financial",
+      "criteria": "估值方法适配，历史/TTM/预测分开；正确解释 A/H、股本、解禁、融资、流动性和资金流。"
+    },
+    "reasoning_causality_materiality": {
+      "label": "分析推理、因果与重要性",
+      "weight": 10,
+      "kind": "financial",
+      "criteria": "证据到结论链完整，相关性与因果分开，重大性有规模、持续性和现金影响支撑。"
+    },
+    "risk_scenario_calibration": {
+      "label": "风险、情景与结论校准",
+      "weight": 10,
+      "kind": "financial",
+      "criteria": "正反证据对称；说明不确定性、敏感项、情景触发器和验证指标；不越过研究支持边界。"
+    },
+    "capability_track_data_quality": {
+      "label": "能力选择、轨道与数据质量",
+      "weight": 5,
+      "kind": "technical",
+      "criteria": "使用正确 CAP/检索路径，两轨不污染；错误响应拒绝、有限重试和降级动作正确。"
+    },
+    "output_evidence_trace": {
+      "label": "输出契约、证据追踪与 trace",
+      "weight": 5,
+      "kind": "technical",
+      "criteria": "必要证据可追溯，格式、控制参数、missing_fields、reason_code、trace 和免责声明满足契约。"
+    }
+  },
+  "anchors": {
+    "0": "缺失、反向错误或越过专业边界",
+    "1": "严重不足，仅有碎片且核心能力未完成",
+    "2": "基本可用但存在明显分析缺口",
+    "3": "较完整且大部分可复核，仍有次要缺口",
+    "4": "专业金融研究人员可复核、可解释、可用于决策支持"
+  },
+  "professional_acceptance_codes": {
+    "FP01": {
+      "name": "主体与证券",
+      "criteria": "发行人、证券、市场、交易所、资产类型及 A/H 映射一致。",
+      "anchors": {
+        "0": "错主体或错证券",
+        "2": "主体正确但市场/证券层级不完整",
+        "4": "先完成身份门控，并处理同名、A/H、ETF/期权等歧义"
+      }
+    },
+    "FP02": {
+      "name": "时点与期间",
+      "criteria": "报价、事件、FY/FQ/TTM、单季/累计及 CUT_OFF 口径一致。",
+      "anchors": {
+        "0": "未来泄漏或期间混用",
+        "2": "时间标签基本正确但可比性说明不足",
+        "4": "动态结论带时点，跨期比较严格可比"
+      }
+    },
+    "FP03": {
+      "name": "会计基础",
+      "criteria": "合并/母公司、会计准则、币种、单位、期末数/期间数及重述口径正确。",
+      "anchors": {
+        "0": "基础错误导致误判",
+        "2": "主要口径正确但遗漏一项",
+        "4": "全部口径明确，重分类、重述和异常项有解释"
+      }
+    },
+    "FP04": {
+      "name": "三表与盈利质量",
+      "criteria": "利润、现金流和资产负债表勾稽；区分利润增长与现金兑现。",
+      "anchors": {
+        "0": "只看利润或三表冲突",
+        "2": "能并列三表但缺乏质量判断",
+        "4": "解释现金转换、营运资本、非经常性项目和可持续性"
+      }
+    },
+    "FP05": {
+      "name": "资产负债与财务风险",
+      "criteria": "杠杆、流动性、资本开支、减值、偿债和表外风险判断。",
+      "anchors": {
+        "0": "忽略重大财务风险",
+        "2": "罗列比率",
+        "4": "结合期限结构、现金流、担保/质押和行业特征评估承压能力"
+      }
+    },
+    "FP06": {
+      "name": "经营驱动",
+      "criteria": "收入量价、成本、毛利率、产能、利用率、客户/产品结构等驱动拆解。",
+      "anchors": {
+        "0": "把结果当原因",
+        "2": "识别主要驱动但无量化",
+        "4": "建立经营变量→报表→现金流的可验证链条"
+      }
+    },
+    "FP07": {
+      "name": "行业与竞争",
+      "criteria": "行业周期、供需、竞争格局、监管和公司相对位置。",
+      "anchors": {
+        "0": "主题标签替代行业分析",
+        "2": "描述行业背景",
+        "4": "用可比口径解释公司相对优势、约束与周期敏感性"
+      }
+    },
+    "FP08": {
+      "name": "估值方法",
+      "criteria": "历史/TTM/预测分开，方法适配行业和盈利状态，口径可复核。",
+      "anchors": {
+        "0": "倍数口径错误或无数据仍给目标价",
+        "2": "给出单一正确倍数",
+        "4": "说明方法选择、可比对象、周期位置和敏感变量"
+      }
+    },
+    "FP09": {
+      "name": "资本市场结构",
+      "criteria": "A/H、股本、流通盘、解禁、回购、增减持、融资与资金流的经济含义。",
+      "anchors": {
+        "0": "混淆股本或资金流定义",
+        "2": "正确罗列事件",
+        "4": "解释稀释、供给压力、流动性和跨市场价差的边界"
+      }
+    },
+    "FP10": {
+      "name": "量化指标纪律",
+      "criteria": "复权、交易日窗口、样本数、收益率、波动率、MA/RSI 和流动性定义正确。",
+      "anchors": {
+        "0": "用单点或薄窗口伪算",
+        "2": "公式正确但窗口/复权说明不足",
+        "4": "输入、公式、观察数和限制均可复核"
+      }
+    },
+    "FP11": {
+      "name": "事件与因果",
+      "criteria": "区分披露事实、市场反应、相关性、因果和替代解释。",
+      "anchors": {
+        "0": "凭单条新闻断言因果",
+        "2": "时序正确但反证不足",
+        "4": "形成事件→机制→财务影响→验证指标的因果链"
+      }
+    },
+    "FP12": {
+      "name": "重要性判断",
+      "criteria": "按规模、持续性、现金影响、治理影响和可逆性区分重大事项与噪声。",
+      "anchors": {
+        "0": "重大性颠倒",
+        "2": "结论方向合理但未量化",
+        "4": "提供相对规模、基准和持续时间并排序"
+      }
+    },
+    "FP13": {
+      "name": "风险与情景",
+      "criteria": "正反证据对称，区分基准、上行和下行情景及触发条件。",
+      "anchors": {
+        "0": "单边叙事或确定性承诺",
+        "2": "列出风险但未连接指标",
+        "4": "风险、触发器、传导机制和可观测验证项完整"
+      }
+    },
+    "FP14": {
+      "name": "证据与结论校准",
+      "criteria": "一手证据优先，弱证据不支撑强结论；缺失时主动降级。",
+      "anchors": {
+        "0": "编造或用错误证据",
+        "2": "证据基本相关但强度不足",
+        "4": "事实、推断、假设和未知项清晰分层"
+      }
+    },
+    "FP15": {
+      "name": "研究边界",
+      "criteria": "输出研究判断而非交易指令；避免目标价、仓位、收益承诺和期权执行策略。",
+      "anchors": {
+        "0": "越权给出执行建议",
+        "2": "免责声明存在但正文仍暗示操作",
+        "4": "结论可决策但不越过研究支持边界"
+      }
+    }
+  },
+  "hard_failure_caps": {
+    "fabricated_critical_evidence": 0,
+    "future_information_leakage": 0,
+    "wrong_entity_core_conclusion": 20,
+    "material_period_basis_unit_error": 40,
+    "rejected_evidence_supports_conclusion": 50,
+    "investment_instruction": 60,
+    "financial_subscore_below_54": 69
+  },
+  "pass_thresholds": {
+    "atomic": {
+      "total": 75,
+      "financial": 68
+    },
+    "workflow": {
+      "total": 80,
+      "financial": 74,
+      "named_dimension_floor": 0.6
+    },
+    "boundary": {
+      "total": 75,
+      "financial": 68,
+      "expected_action_required": true
+    }
+  },
+  "publication_requirements": [
+    {
+      "id": "entity_error_rate",
+      "metric": "error_tag_rate",
+      "variants": [
+        "qveris-cli",
+        "qveris-mcp"
+      ],
+      "minimum_observations": 1,
+      "operator": "lt",
+      "threshold": 0.01,
+      "error_tags": [
+        "entity_security_error"
+      ],
+      "capability_groups": [
+        "master_data"
+      ]
+    },
+    {
+      "id": "market_observation_basis_error_rate",
+      "metric": "error_tag_rate",
+      "variants": [
+        "qveris-cli",
+        "qveris-mcp"
+      ],
+      "minimum_observations": 1,
+      "operator": "lte",
+      "threshold": 0.05,
+      "error_tags": [
+        "quote_timing_error",
+        "market_window_basis_error",
+        "technical_calculation_error"
+      ],
+      "capability_groups": [
+        "market_history"
+      ]
+    },
+    {
+      "id": "financial_period_basis_material_error_rate",
+      "metric": "error_tag_rate",
+      "variants": [
+        "qveris-cli",
+        "qveris-mcp"
+      ],
+      "minimum_observations": 1,
+      "operator": "eq",
+      "threshold": 0,
+      "error_tags": [
+        "accounting_material_error",
+        "comparability_error",
+        "three_statement_linkage_error"
+      ],
+      "capability_groups": [
+        "financials"
+      ]
+    },
+    {
+      "id": "news_entity_mixing_rate",
+      "metric": "error_tag_rate",
+      "variants": [
+        "qveris-cli",
+        "qveris-mcp"
+      ],
+      "minimum_observations": 1,
+      "operator": "lt",
+      "threshold": 0.02,
+      "error_tags": [
+        "news_entity_mixing_error"
+      ],
+      "capability_groups": [
+        "information_events"
+      ]
+    },
+    {
+      "id": "strong_causality_error_rate",
+      "metric": "error_tag_rate",
+      "variants": [
+        "qveris-cli",
+        "qveris-mcp"
+      ],
+      "minimum_observations": 1,
+      "operator": "lt",
+      "threshold": 0.05,
+      "error_tags": [
+        "strong_causality_error"
+      ],
+      "capability_groups": [
+        "information_events"
+      ]
+    },
+    {
+      "id": "conditional_capability_fabrication_rate",
+      "metric": "error_tag_rate",
+      "variants": [
+        "qveris-cli",
+        "qveris-mcp"
+      ],
+      "minimum_observations": 1,
+      "operator": "eq",
+      "threshold": 0,
+      "error_tags": [
+        "conditional_capability_error"
+      ],
+      "capability_groups": [
+        "ashare_conditional"
+      ]
+    },
+    {
+      "id": "all_open_boundaries",
+      "metric": "boundary_pass_rate",
+      "variants": [
+        "baseline"
+      ],
+      "minimum_observations": 1,
+      "operator": "eq",
+      "threshold": 1,
+      "task_classes": [
+        "boundary"
+      ]
+    },
+    {
+      "id": "all_boundaries",
+      "metric": "boundary_pass_rate",
+      "variants": [
+        "qveris-cli",
+        "qveris-mcp"
+      ],
+      "minimum_observations": 1,
+      "operator": "eq",
+      "threshold": 1,
+      "task_classes": [
+        "boundary"
+      ]
+    },
+    {
+      "id": "prohibited_output_rate",
+      "metric": "error_tag_rate",
+      "variants": [
+        "baseline",
+        "qveris-cli",
+        "qveris-mcp"
+      ],
+      "minimum_observations": 1,
+      "operator": "eq",
+      "threshold": 0,
+      "error_tags": [
+        "research_boundary_error",
+        "prohibited_output"
+      ]
+    }
+  ],
+  "human_review": {
+    "blind_primary_raters": 2,
+    "adjudication_if_weighted_score_spread_gt": 15,
+    "adjudication_on_hard_failure_disagreement": true,
+    "adjudication_on_core_failure_disagreement": true,
+    "adjudication_on_materiality_disagreement": true,
+    "adjudicator_basis_required": true,
+    "llm_judge_role": "prescreen_only",
+    "calibration_items": 10,
+    "weighted_cohens_kappa_min": 0.7
+  }
+}

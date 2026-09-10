@@ -1,0 +1,12 @@
+{
+  "schema_version": "1.0.0",
+  "benchmark_profile": "a-share-factor-screen-v1.0",
+  "benchmark_version": "1.0.1",
+  "source_spec": {
+    "title": "qveris-a-share-factor-screen 可复现、可审计、金融专业性双轨评测规范",
+    "original_filename": "pasted-text.txt",
+    "content_hash": "sha256:aff8f3b98e23e041f5cf242567f8a085ced738b1f3c9b5b668061e38a3c47d59",
+    "byte_length": 20831
+  },
+  "derivation_policy": "Every generated task maps to the source specification's atomic, workflow, or boundary section and retains its source task identifier."
+}

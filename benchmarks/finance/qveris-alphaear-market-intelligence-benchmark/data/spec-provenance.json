@@ -1,0 +1,12 @@
+{
+  "schema_version": "1.0.0",
+  "benchmark_profile": "alphaear-market-intelligence-v2.2",
+  "benchmark_version": "1.0.1",
+  "source_spec": {
+    "title": "BENCHMARK SPECIFICATION · ADAPTED V2.2 市场情报、新闻情绪与 thesis/watch-item 更新的双轨金融评测规范",
+    "original_filename": "pasted-text.txt",
+    "content_hash": "sha256:7013060a9341f96480ab1677ee54cd4cb7a94e577339adf3cab59087bf8076f7",
+    "byte_length": 33675
+  },
+  "derivation_policy": "Every generated task maps to the source specification's atomic, workflow, or boundary section and retains its source task identifier."
+}

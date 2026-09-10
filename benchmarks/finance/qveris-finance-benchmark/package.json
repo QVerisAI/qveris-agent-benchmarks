@@ -1,0 +1,30 @@
+{
+  "name": "@qveris/finance-benchmark",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Finance benchmark for integrated model + QVeris Skill + QVeris transport lift versus an open public-source baseline, with deterministic boundary transports.",
+  "bin": {
+    "benchmark": "./bin/benchmark.mjs"
+  },
+  "scripts": {
+    "benchmark": "node ./bin/benchmark.mjs",
+    "call-chain:plan": "node ./bin/call-chain-eval.mjs plan",
+    "call-chain:run": "node ./bin/call-chain-eval.mjs run",
+    "call-chain:report": "node ./bin/call-chain-report.mjs",
+    "build:a-stock-data-layer": "node ../qveris-a-stock-data-layer-benchmark/scripts/build-benchmark.mjs",
+    "build:a-share-factor-screen": "node ../qveris-a-share-factor-screen-benchmark/scripts/build-benchmark.mjs",
+    "build:a-share-data": "node ../qveris-a-share-data-benchmark/scripts/build-benchmark.mjs",
+    "build:alphaear-market-intelligence": "node ../qveris-alphaear-market-intelligence-benchmark/scripts/build-benchmark.mjs",
+    "build:daymade-financial-data-suite": "node ../qveris-daymade-financial-data-suite-benchmark/scripts/build-benchmark.mjs",
+    "build:uzi-equity-research": "node ../qveris-uzi-equity-research-benchmark/scripts/build-benchmark.mjs",
+    "build:a-share-specialized": "npm run build:a-share-factor-screen && npm run build:a-share-data && npm run build:alphaear-market-intelligence && npm run build:daymade-financial-data-suite && npm run build:uzi-equity-research",
+    "run-all": "node ./bin/run-all.mjs",
+    "test": "node --test test/*.test.mjs",
+    "lint": "cd .. && npx -y eslint@9 --config qveris-finance-benchmark/eslint.config.mjs qveris-finance-benchmark qveris-a-stock-data-layer-benchmark/scripts/*.mjs qveris-a-share-factor-screen-benchmark/scripts/*.mjs qveris-a-share-data-benchmark/scripts/*.mjs qveris-alphaear-market-intelligence-benchmark/scripts/*.mjs qveris-daymade-financial-data-suite-benchmark/scripts/*.mjs qveris-uzi-equity-research-benchmark/scripts/*.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "Apache-2.0"
+}

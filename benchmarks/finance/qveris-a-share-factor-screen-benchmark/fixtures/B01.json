@@ -1,0 +1,24 @@
+{
+  "fixture_id": "a-share-factor-screen-v1.0-B01",
+  "request": {
+    "capability": "qveris_finance.ref_symbology",
+    "symbol": "600519.SH"
+  },
+  "responses": [
+    {
+      "status": "success",
+      "http_status": 200,
+      "data": {
+        "symbol": "0700.HK",
+        "exchange": "HKEX",
+        "asset_type": "common_stock"
+      }
+    }
+  ],
+  "expected_reason_code": "semantic_mismatch",
+  "expected_reason_codes": [
+    "semantic_mismatch"
+  ],
+  "allowed_retries": 0,
+  "content_hash": "sha256:a4b9a61991b4d75a8d4cbdb45352f0f4c77c3a9a4327513d0a28e392fe1caed5"
+}

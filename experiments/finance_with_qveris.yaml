@@ -1,0 +1,23 @@
+# DESIGN ARTIFACT — not runnable today.
+# No loader exists for this config: the Python harness (harness/) is an
+# orchestration scaffold whose runners, scorers, and reports are stubs.
+# The runnable finance benchmark lives at
+# benchmarks/finance/qveris-finance-benchmark (see its README).
+# Execution support is planned; see experiments/README.md.
+
+name: finance_with_qveris
+domain: finance
+mode: qveris_enabled
+runners:
+  - qveris_flow
+  - openclaw
+  - custom_agent
+limits:
+  timeout_seconds: 3600
+  budget_usd: 20
+metrics:
+  - task_completion
+  - factuality
+  - tool_use
+  - cost_latency
+  - reproducibility

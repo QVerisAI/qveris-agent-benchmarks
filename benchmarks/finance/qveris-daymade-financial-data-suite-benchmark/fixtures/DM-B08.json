@@ -1,0 +1,20 @@
+{
+  "fixture_id": "daymade-financial-data-suite-v2.2-DM-B08",
+  "request": {
+    "capability": "qveris_finance.flow_sector_capital",
+    "sector": "pharma"
+  },
+  "responses": [
+    {
+      "status": "error",
+      "http_status": 404,
+      "error": "invalid_capability"
+    }
+  ],
+  "expected_reason_code": "capability_unavailable",
+  "expected_reason_codes": [
+    "capability_unavailable"
+  ],
+  "allowed_retries": 0,
+  "content_hash": "sha256:357b0d666b92d9ad10fcb76f1c5109d4d11381efe792a384b2d04041349795ac"
+}

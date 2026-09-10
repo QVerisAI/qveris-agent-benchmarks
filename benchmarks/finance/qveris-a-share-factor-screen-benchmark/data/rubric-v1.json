@@ -1,0 +1,245 @@
+{
+  "rubric_profile": "FACTOR_SCREEN_RUBRIC_V1",
+  "benchmark_profile": "a-share-factor-screen-v1.0",
+  "version": "1.0.1",
+  "score": {
+    "financial": 90,
+    "technical": 10,
+    "total": 100
+  },
+  "dimensions": {
+    "universe_eligibility": {
+      "label": "宇宙、主体与证券适格性",
+      "weight": 10,
+      "kind": "financial",
+      "criteria": "证券、交易所、市场、资产类型和大陆普通股范围正确。"
+    },
+    "temporal_cross_section_comparability": {
+      "label": "时点、财期与横截面可比性",
+      "weight": 18,
+      "kind": "financial",
+      "criteria": "AS_OF、交易日窗口、FY/FQ、币种、单位、复权和会计基础一致，无未来泄漏。"
+    },
+    "factor_inputs_formulas": {
+      "label": "因子输入、定义与公式",
+      "weight": 16,
+      "kind": "financial",
+      "criteria": "动量、流动性、波动、估值和质量输入有效，公式、观察数、年化与端点可复核。"
+    },
+    "value_quality_financial_basis": {
+      "label": "价值、质量与财务基础",
+      "weight": 14,
+      "kind": "financial",
+      "criteria": "三表和比率期间对齐，历史、TTM、前瞻严格分开。"
+    },
+    "aggregation_denominator_ranking": {
+      "label": "评分聚合、有效分母与排名纪律",
+      "weight": 12,
+      "kind": "financial",
+      "criteria": "只聚合有效因子，缺失移出分母并披露覆盖率，至少三只同口径证券才排名。"
+    },
+    "industry_risk_calibration": {
+      "label": "行业语境、风险与解释校准",
+      "weight": 8,
+      "kind": "financial",
+      "criteria": "行业只作已验证上下文，代理与主证据分层，解释不超过数据。"
+    },
+    "historical_evaluation_research_boundary": {
+      "label": "历史后评与研究边界",
+      "weight": 12,
+      "kind": "financial",
+      "criteria": "先固定 AS_OF 分数再取 EVAL_20，不把后评写成预测，不给交易指令。"
+    },
+    "capability_track_data_quality": {
+      "label": "通用执行契约",
+      "weight": 5,
+      "kind": "technical",
+      "criteria": "两轨统一按 variant、独立会话、总外部调用预算和授权证据渠道评分；CAP 与接口格式另作诊断。"
+    },
+    "output_evidence_trace": {
+      "label": "通用证据输出契约",
+      "weight": 5,
+      "kind": "technical",
+      "criteria": "两轨统一按非空回答、材料证据、时间上下文、缺失披露和研究边界评分；专项结构与 trace 另作诊断。"
+    }
+  },
+  "anchors": {
+    "0": "缺失、反向错误、未来泄漏或越过研究边界",
+    "1": "严重不足且核心能力未完成",
+    "2": "基本可用但存在重要缺口",
+    "3": "较完整且大部分可复核",
+    "4": "金融研究人员可复核、解释并用于研究流程"
+  },
+  "hard_failure_caps": {
+    "fabricated_critical_evidence": 0,
+    "future_information_leakage": 0,
+    "wrong_entity_core_conclusion": 20,
+    "material_period_basis_unit_error": 40,
+    "rejected_evidence_supports_conclusion": 50,
+    "invalid_ranking": 50,
+    "proxy_presented_as_full_market": 60,
+    "investment_instruction": 60,
+    "financial_subscore_below_54": 69
+  },
+  "pass_thresholds": {
+    "atomic": {
+      "total": 75,
+      "financial": 68
+    },
+    "workflow": {
+      "total": 80,
+      "financial": 74,
+      "named_dimension_floor": 0.6
+    },
+    "boundary": {
+      "total": 75,
+      "financial": 68,
+      "expected_action_required": true
+    }
+  },
+  "workflow_floor_dimensions": [
+    "temporal_cross_section_comparability",
+    "aggregation_denominator_ranking",
+    "historical_evaluation_research_boundary"
+  ],
+  "capability_group_weights": {
+    "universe": 0.1,
+    "market_factors": 0.2,
+    "financial_factors": 0.2,
+    "context_events": 0.1,
+    "scoring_ranking": 0.2,
+    "historical_evaluation": 0.15,
+    "data_quality": 0.05
+  },
+  "publication_requirements": [
+    {
+      "id": "entity_universe_error_rate",
+      "metric": "error_tag_rate",
+      "variants": [
+        "qveris-cli",
+        "qveris-mcp"
+      ],
+      "minimum_observations": 1,
+      "operator": "lt",
+      "threshold": 0.01,
+      "error_tags": [
+        "entity_security_error",
+        "universe_error"
+      ],
+      "capability_groups": [
+        "universe"
+      ]
+    },
+    {
+      "id": "comparability_future_leakage_rate",
+      "metric": "error_tag_rate",
+      "variants": [
+        "qveris-cli",
+        "qveris-mcp"
+      ],
+      "minimum_observations": 1,
+      "operator": "eq",
+      "threshold": 0,
+      "error_tags": [
+        "accounting_material_error",
+        "comparability_error",
+        "future_leakage",
+        "market_window_basis_error"
+      ]
+    },
+    {
+      "id": "ranking_discipline_error_rate",
+      "metric": "error_tag_rate",
+      "variants": [
+        "qveris-cli",
+        "qveris-mcp"
+      ],
+      "minimum_observations": 1,
+      "operator": "eq",
+      "threshold": 0,
+      "error_tags": [
+        "ranking_discipline_error"
+      ],
+      "capability_groups": [
+        "scoring_ranking",
+        "historical_evaluation"
+      ]
+    },
+    {
+      "id": "missing_transparency_check_rate",
+      "metric": "deterministic_pass_rate",
+      "variants": [
+        "qveris-cli",
+        "qveris-mcp"
+      ],
+      "minimum_observations": 1,
+      "operator": "eq",
+      "threshold": 1,
+      "check_ids": [
+        "missing_data_disclosed"
+      ]
+    },
+    {
+      "id": "all_boundaries",
+      "metric": "boundary_pass_rate",
+      "variants": [
+        "qveris-cli",
+        "qveris-mcp"
+      ],
+      "minimum_observations": 1,
+      "operator": "eq",
+      "threshold": 1,
+      "task_classes": [
+        "boundary"
+      ]
+    },
+    {
+      "id": "prohibited_output_rate",
+      "metric": "error_tag_rate",
+      "variants": [
+        "baseline",
+        "qveris-cli",
+        "qveris-mcp"
+      ],
+      "minimum_observations": 1,
+      "operator": "eq",
+      "threshold": 0,
+      "error_tags": [
+        "research_boundary_error",
+        "prohibited_output"
+      ]
+    }
+  ],
+  "pair_timing": {
+    "required_runtime_variable": "T0",
+    "max_start_delta_ms": 1800000,
+    "missing_or_late_pair_action": "exclude_from_paired_lift_and_block_formal_publication"
+  },
+  "technical_scoring_contract": {
+    "comparable_across_tracks": true,
+    "capability_checks": [
+      "track_variant_match",
+      "independent_session",
+      "total_call_budget_respected",
+      "authorized_evidence_channel"
+    ],
+    "output_checks": [
+      "non_empty_answer",
+      "material_evidence_present",
+      "temporal_context_present",
+      "missing_data_disclosed",
+      "research_boundary"
+    ],
+    "interface_diagnostics_affect_score": false,
+    "interface_diagnostics_note": "Track-specific CLI/MCP/Open formatting and trace-contract checks are reported separately and do not change the 10-point technical score."
+  },
+  "human_review": {
+    "blind_primary_raters": 2,
+    "adjudication_if_weighted_score_spread_gt": 15,
+    "adjudication_on_hard_failure_disagreement": true,
+    "adjudicator_basis_required": true,
+    "llm_judge_role": "prescreen_only",
+    "calibration_items": 10,
+    "weighted_cohens_kappa_min": 0.7
+  }
+}

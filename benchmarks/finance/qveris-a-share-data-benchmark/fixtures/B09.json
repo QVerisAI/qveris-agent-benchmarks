@@ -1,0 +1,22 @@
+{
+  "fixture_id": "a-share-data-v1.0-B09",
+  "request": {
+    "capability": "qveris_finance.ref_security_master",
+    "symbol": "601398.SH"
+  },
+  "responses": [
+    {
+      "status": "success",
+      "data": {
+        "a_share": "601398.SH",
+        "h_share": null
+      }
+    }
+  ],
+  "expected_reason_code": "missing",
+  "expected_reason_codes": [
+    "missing"
+  ],
+  "allowed_retries": 0,
+  "content_hash": "sha256:dcfdbbf8ceba1f5e9c01c52fb555adf691bcfb3be1dd6c043112fa9bd91b7ef2"
+}

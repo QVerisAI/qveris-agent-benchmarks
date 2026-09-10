@@ -1,0 +1,30 @@
+{
+  "fixture_id": "a-share-data-v1.0-B02",
+  "request": {
+    "capability": "qveris_finance.mkt_l1_rt",
+    "symbol": "600519.SH"
+  },
+  "responses": [
+    {
+      "status": "success",
+      "data": {
+        "price": {
+          "value": 1400,
+          "time": "T0"
+        },
+        "amount": {
+          "value": 100000000,
+          "time": "T0-30m"
+        },
+        "change_pct": 1.2
+      }
+    }
+  ],
+  "expected_reason_code": "stale",
+  "expected_reason_codes": [
+    "stale",
+    "timestamp_missing"
+  ],
+  "allowed_retries": 0,
+  "content_hash": "sha256:41a31930bb2b628bf91de94bc1cbd70246fb13b377c1140774c469671b102fc3"
+}

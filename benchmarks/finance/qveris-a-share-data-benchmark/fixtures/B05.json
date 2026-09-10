@@ -1,0 +1,61 @@
+{
+  "fixture_id": "a-share-data-v1.0-B05",
+  "request": {
+    "capability": "qveris_finance.mkt_bars_adjusted",
+    "symbol": "688981.SH",
+    "window": "D60"
+  },
+  "responses": [
+    {
+      "status": "success",
+      "data": [
+        {
+          "date_index": 0,
+          "close": 50
+        },
+        {
+          "date_index": 1,
+          "close": 51
+        },
+        {
+          "date_index": 2,
+          "close": 52
+        },
+        {
+          "date_index": 3,
+          "close": 53
+        },
+        {
+          "date_index": 4,
+          "close": 54
+        },
+        {
+          "date_index": 5,
+          "close": 55
+        },
+        {
+          "date_index": 6,
+          "close": 56
+        },
+        {
+          "date_index": 7,
+          "close": 57
+        },
+        {
+          "date_index": 8,
+          "close": 58
+        },
+        {
+          "date_index": 9,
+          "close": 59
+        }
+      ]
+    }
+  ],
+  "expected_reason_code": "insufficient_observations",
+  "expected_reason_codes": [
+    "insufficient_observations"
+  ],
+  "allowed_retries": 0,
+  "content_hash": "sha256:4c6b8119516d140abaedee63ddf70bd4cb5943666c467bca0c43876007ade355"
+}

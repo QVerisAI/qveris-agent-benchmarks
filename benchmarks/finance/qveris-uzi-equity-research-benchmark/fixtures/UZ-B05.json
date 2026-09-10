@@ -1,0 +1,29 @@
+{
+  "fixture_id": "uzi-equity-research-v2.2-UZ-B05",
+  "request": {
+    "capability": "qveris_finance.fundamentals_derived_ratios",
+    "symbol": "NVDA",
+    "fiscal_period": "FY"
+  },
+  "responses": [
+    {
+      "status": "success",
+      "data": {
+        "fiscal_period": "Q3"
+      }
+    },
+    {
+      "status": "success",
+      "data": {
+        "period_type": "TTM",
+        "measurement_basis": null
+      }
+    }
+  ],
+  "expected_reason_code": "period_mismatch",
+  "expected_reason_codes": [
+    "period_mismatch"
+  ],
+  "allowed_retries": 1,
+  "content_hash": "sha256:ccfd5da3dc9b47e509f46a6d0e00b1b58ad860595d5d341669b6ec4169103190"
+}

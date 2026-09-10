@@ -1,0 +1,76 @@
+#!/usr/bin/env bash
+set -u
+
+export NODE_OPTIONS="${NODE_OPTIONS:+$NODE_OPTIONS }--dns-result-order=ipv4first"
+
+QVERIS_CLI_PACKAGE=${QVERIS_CLI_PACKAGE:-@qverisai/cli@0.9.0}
+MAX_ATTEMPTS=${QVERIS_RETRY_ATTEMPTS:-4}
+LOCK_FILE=${QVERIS_LOCK_FILE:-/tmp/qveris-benchmark.lock}
+LOCK_TIMEOUT=${QVERIS_LOCK_TIMEOUT:-120}
+
+case "${1:-}" in
+  --version|-V|--help|-h)
+    exec npm exec -y --package "$QVERIS_CLI_PACKAGE" -- qveris "$@"
+    ;;
+esac
+
+run_with_retries() {
+  has_timeout=0
+  for arg in "$@"; do
+    if [[ "$arg" == "--timeout" || "$arg" == --timeout=* ]]; then
+      has_timeout=1
+      break
+    fi
+  done
+
+  attempt=1
+  while (( attempt <= MAX_ATTEMPTS )); do
+    stdout_file=$(mktemp)
+    stderr_file=$(mktemp)
+
+    if (( attempt == 1 || has_timeout == 1 )); then
+      npm exec -y --package "$QVERIS_CLI_PACKAGE" -- qveris "$@" >"$stdout_file" 2>"$stderr_file"
+    else
+      npm exec -y --package "$QVERIS_CLI_PACKAGE" -- qveris "$@" --timeout 60 >"$stdout_file" 2>"$stderr_file"
+    fi
+    status=$?
+
+    if (( status == 0 )); then
+      cat "$stdout_file"
+      cat "$stderr_file" >&2
+      rm -f "$stdout_file" "$stderr_file"
+      return 0
+    fi
+
+    if ! grep -qi "fetch failed" "$stdout_file" "$stderr_file"; then
+      cat "$stdout_file"
+      cat "$stderr_file" >&2
+      rm -f "$stdout_file" "$stderr_file"
+      return "$status"
+    fi
+
+    if (( attempt == MAX_ATTEMPTS )); then
+      cat "$stdout_file"
+      cat "$stderr_file" >&2
+      rm -f "$stdout_file" "$stderr_file"
+      return "$status"
+    fi
+
+    rm -f "$stdout_file" "$stderr_file"
+    sleep $(( attempt < 3 ? attempt : 3 ))
+    attempt=$(( attempt + 1 ))
+  done
+}
+
+if command -v flock >/dev/null 2>&1; then
+  (
+    flock -w "$LOCK_TIMEOUT" 9 || {
+      echo '{"error":"qveris benchmark lock timeout","exit_code":75}' >&2
+      exit 75
+    }
+    run_with_retries "$@"
+  ) 9>"$LOCK_FILE"
+else
+  echo "warning: flock not available; concurrent qveris invocations will not be serialized" >&2
+  run_with_retries "$@"
+fi

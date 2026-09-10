@@ -1,0 +1,92 @@
+{
+  "schema_version": "1.0.0",
+  "repository": {
+    "current": "QVerisAI/qveris-agent-benchmarks",
+    "source_snapshot_commit": "6d3966e413cb05601f52479838d3a6c27015eec8",
+    "history_policy": "clean-single-root-snapshot"
+  },
+  "release_status": "release-candidate",
+  "publication_mode": "transparent-development",
+  "task_count": 367,
+  "suites": [
+    {
+      "id": "qveris-a-share-data-benchmark",
+      "path": "benchmarks/finance/qveris-a-share-data-benchmark",
+      "version": "1.0.1",
+      "task_count": 59,
+      "maturity": "candidate",
+      "golden_policy": "public-pending-golden-drafts",
+      "formal_publication_ready": false
+    },
+    {
+      "id": "qveris-a-share-factor-screen-benchmark",
+      "path": "benchmarks/finance/qveris-a-share-factor-screen-benchmark",
+      "version": "1.0.1",
+      "task_count": 57,
+      "maturity": "candidate",
+      "golden_policy": "public-pending-golden-drafts",
+      "formal_publication_ready": false
+    },
+    {
+      "id": "qveris-a-stock-data-layer-benchmark",
+      "path": "benchmarks/finance/qveris-a-stock-data-layer-benchmark",
+      "version": "1.0.1",
+      "task_count": 70,
+      "maturity": "candidate",
+      "golden_policy": "public-pending-golden-drafts",
+      "formal_publication_ready": false
+    },
+    {
+      "id": "qveris-alphaear-market-intelligence-benchmark",
+      "path": "benchmarks/finance/qveris-alphaear-market-intelligence-benchmark",
+      "version": "1.0.1",
+      "task_count": 39,
+      "maturity": "candidate",
+      "golden_policy": "public-pending-golden-drafts",
+      "formal_publication_ready": false
+    },
+    {
+      "id": "qveris-daymade-financial-data-suite-benchmark",
+      "path": "benchmarks/finance/qveris-daymade-financial-data-suite-benchmark",
+      "version": "1.0.1",
+      "task_count": 44,
+      "maturity": "candidate",
+      "golden_policy": "public-pending-golden-drafts",
+      "formal_publication_ready": false
+    },
+    {
+      "id": "qveris-finance-benchmark",
+      "path": "benchmarks/finance/qveris-finance-benchmark",
+      "version": "1.0.0",
+      "task_count": 50,
+      "maturity": "candidate",
+      "golden_policy": "public-acceptance-specifications",
+      "formal_publication_ready": false
+    },
+    {
+      "id": "qveris-uzi-equity-research-benchmark",
+      "path": "benchmarks/finance/qveris-uzi-equity-research-benchmark",
+      "version": "1.0.1",
+      "task_count": 48,
+      "maturity": "candidate",
+      "golden_policy": "public-pending-golden-drafts",
+      "formal_publication_ready": false
+    }
+  ],
+  "published_result_roots": [],
+  "private_asset_policy": {
+    "storage": "external-access-controlled",
+    "categories": [
+      "holdout-tasks",
+      "sealed-oracles",
+      "credentials",
+      "reviewer-identities",
+      "raw-provider-payloads",
+      "unreviewed-traces"
+    ]
+  },
+  "release_blockers": [
+    "licensing-authority-confirmation",
+    "public-visibility-owner-approval"
+  ]
+}

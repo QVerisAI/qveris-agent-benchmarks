@@ -1,0 +1,317 @@
+{
+  "rubric_profile": "UZI_RUBRIC_V2.2",
+  "benchmark_profile": "uzi-equity-research-v2.2",
+  "version": "1.0.1",
+  "score": {
+    "financial": 90,
+    "technical": 10,
+    "total": 100
+  },
+  "dimensions": {
+    "financial_fact_accuracy": {
+      "label": "事实与金融数据准确性",
+      "weight": 15,
+      "kind": "financial",
+      "criteria": "主体、证券、时点、数值、单位、币种和定义正确，并与冻结证据一致。"
+    },
+    "accounting_period_comparability": {
+      "label": "会计口径与跨期可比性",
+      "weight": 20,
+      "kind": "financial",
+      "criteria": "FY/FQ/TTM、单季/累计、合并/母公司、期末/期间、重述、复权和交易日口径正确。"
+    },
+    "statements_earnings_quality": {
+      "label": "三表勾稽与盈利质量",
+      "weight": 15,
+      "kind": "financial",
+      "criteria": "利润、现金流和资产负债联动，并识别非经常性项目、营运资本、现金转换、杠杆和减值。"
+    },
+    "operating_industry_competition": {
+      "label": "经营驱动、行业与竞争",
+      "weight": 10,
+      "kind": "financial",
+      "criteria": "从量价、成本、产能、产品或客户结构、周期和竞争解释经营变化。"
+    },
+    "valuation_capital_markets": {
+      "label": "估值与资本市场解释",
+      "weight": 10,
+      "kind": "financial",
+      "criteria": "方法适配，历史、TTM、预测分开，正确解释股本、资金流、解禁、融资与流动性。"
+    },
+    "reasoning_causality_materiality": {
+      "label": "分析推理、因果与重要性",
+      "weight": 10,
+      "kind": "financial",
+      "criteria": "证据到结论链完整，相关性与因果分开，重大性有规模、持续性和现金影响支撑。"
+    },
+    "risk_scenario_calibration": {
+      "label": "风险、情景与结论校准",
+      "weight": 10,
+      "kind": "financial",
+      "criteria": "正反证据对称，说明不确定性、情景触发器和验证指标，不越过研究边界。"
+    },
+    "capability_track_data_quality": {
+      "label": "能力选择、轨道与数据质量",
+      "weight": 5,
+      "kind": "technical",
+      "criteria": "两轨遵守授权证据渠道、独立会话与同等调用预算，错误响应正确拒绝、重试和降级。"
+    },
+    "output_evidence_trace": {
+      "label": "输出契约、证据追踪与 trace",
+      "weight": 5,
+      "kind": "technical",
+      "criteria": "证据可追溯，missing_fields、reason_code、trace、时点和免责声明满足契约。"
+    }
+  },
+  "anchors": {
+    "0": "缺失、反向错误、未来泄漏或越过研究边界",
+    "1": "严重不足且核心能力未完成",
+    "2": "基本可用但存在重要缺口",
+    "3": "较完整且大部分可复核",
+    "4": "金融研究人员可复核、解释并用于研究流程"
+  },
+  "hard_failure_caps": {
+    "fabricated_critical_evidence": 0,
+    "future_information_leakage": 0,
+    "wrong_entity_core_conclusion": 20,
+    "material_period_basis_unit_error": 40,
+    "rejected_evidence_supports_conclusion": 50,
+    "investment_instruction": 60,
+    "financial_subscore_below_54": 69
+  },
+  "pass_thresholds": {
+    "atomic": {
+      "total": 75,
+      "financial": 68
+    },
+    "workflow": {
+      "total": 80,
+      "financial": 74,
+      "named_dimension_floor": 0.6
+    },
+    "boundary": {
+      "total": 75,
+      "financial": 68,
+      "expected_action_required": true
+    }
+  },
+  "workflow_floor_dimensions": [
+    "accounting_period_comparability",
+    "reasoning_causality_materiality",
+    "risk_scenario_calibration"
+  ],
+  "capability_group_weights": {
+    "identity_listing": 0.1,
+    "market_quant": 0.1,
+    "financial_valuation_inputs": 0.25,
+    "news_research_events": 0.15,
+    "a_share_flow_capital_structure": 0.15,
+    "risk_scenario_thesis_challenge": 0.15,
+    "data_quality": 0.05,
+    "output_compliance": 0.05
+  },
+  "publication_requirements": [
+    {
+      "id": "entity_error_rate",
+      "metric": "error_tag_rate",
+      "variants": [
+        "qveris-cli",
+        "qveris-mcp"
+      ],
+      "minimum_observations": 1,
+      "operator": "lt",
+      "threshold": 0.01,
+      "error_tags": [
+        "entity_security_error"
+      ],
+      "capability_groups": [
+        "identity_listing"
+      ]
+    },
+    {
+      "id": "market_window_check_rate",
+      "metric": "error_tag_rate",
+      "variants": [
+        "qveris-cli",
+        "qveris-mcp"
+      ],
+      "minimum_observations": 1,
+      "operator": "lte",
+      "threshold": 0.05,
+      "error_tags": [
+        "quote_timing_error",
+        "market_window_basis_error"
+      ],
+      "capability_groups": [
+        "market_quant"
+      ]
+    },
+    {
+      "id": "period_basis_material_error_rate",
+      "metric": "error_tag_rate",
+      "variants": [
+        "qveris-cli",
+        "qveris-mcp"
+      ],
+      "minimum_observations": 1,
+      "operator": "eq",
+      "threshold": 0,
+      "error_tags": [
+        "accounting_material_error",
+        "valuation_basis_error"
+      ],
+      "capability_groups": [
+        "financial_valuation_inputs"
+      ]
+    },
+    {
+      "id": "news_entity_mixing_rate",
+      "metric": "error_tag_rate",
+      "variants": [
+        "qveris-cli",
+        "qveris-mcp"
+      ],
+      "minimum_observations": 1,
+      "operator": "lt",
+      "threshold": 0.02,
+      "error_tags": [
+        "news_entity_mixing_error"
+      ],
+      "capability_groups": [
+        "news_research_events"
+      ]
+    },
+    {
+      "id": "strong_causality_error_rate",
+      "metric": "error_tag_rate",
+      "variants": [
+        "qveris-cli",
+        "qveris-mcp"
+      ],
+      "minimum_observations": 1,
+      "operator": "lt",
+      "threshold": 0.05,
+      "error_tags": [
+        "strong_causality_error"
+      ],
+      "capability_groups": [
+        "news_research_events"
+      ]
+    },
+    {
+      "id": "conditional_capability_fabrication_rate",
+      "metric": "error_tag_rate",
+      "variants": [
+        "qveris-cli",
+        "qveris-mcp"
+      ],
+      "minimum_observations": 1,
+      "operator": "eq",
+      "threshold": 0,
+      "error_tags": [
+        "conditional_capability_error"
+      ],
+      "capability_groups": [
+        "a_share_flow_capital_structure"
+      ]
+    },
+    {
+      "id": "fraud_manipulation_misclassification_rate",
+      "metric": "error_tag_rate",
+      "variants": [
+        "qveris-cli",
+        "qveris-mcp"
+      ],
+      "minimum_observations": 1,
+      "operator": "eq",
+      "threshold": 0,
+      "error_tags": [
+        "fraud_manipulation_misclassification"
+      ],
+      "capability_groups": [
+        "risk_scenario_thesis_challenge"
+      ]
+    },
+    {
+      "id": "risk_counterevidence_gap_rate",
+      "metric": "error_tag_rate",
+      "variants": [
+        "qveris-cli",
+        "qveris-mcp"
+      ],
+      "minimum_observations": 1,
+      "operator": "eq",
+      "threshold": 0,
+      "error_tags": [
+        "risk_counterevidence_gap"
+      ],
+      "capability_groups": [
+        "risk_scenario_thesis_challenge"
+      ]
+    },
+    {
+      "id": "all_boundaries",
+      "metric": "boundary_pass_rate",
+      "variants": [
+        "qveris-cli",
+        "qveris-mcp"
+      ],
+      "minimum_observations": 1,
+      "operator": "eq",
+      "threshold": 1,
+      "task_classes": [
+        "boundary"
+      ]
+    },
+    {
+      "id": "prohibited_output_rate",
+      "metric": "error_tag_rate",
+      "variants": [
+        "baseline",
+        "qveris-cli",
+        "qveris-mcp"
+      ],
+      "minimum_observations": 1,
+      "operator": "eq",
+      "threshold": 0,
+      "error_tags": [
+        "research_boundary_error",
+        "prohibited_output"
+      ]
+    }
+  ],
+  "pair_timing": {
+    "required_runtime_variable": "T0",
+    "max_start_delta_ms": 1800000,
+    "missing_or_late_pair_action": "exclude_from_paired_lift_and_block_formal_publication"
+  },
+  "technical_scoring_contract": {
+    "comparable_across_tracks": true,
+    "capability_checks": [
+      "track_variant_match",
+      "independent_session",
+      "total_call_budget_respected",
+      "authorized_evidence_channel"
+    ],
+    "output_checks": [
+      "non_empty_answer",
+      "material_evidence_present",
+      "temporal_context_present",
+      "missing_data_disclosed",
+      "research_boundary"
+    ],
+    "interface_diagnostics_affect_score": false,
+    "interface_diagnostics_note": "Track-specific CLI/MCP/Open formatting and trace-contract checks are reported separately and do not change the 10-point technical score."
+  },
+  "human_review": {
+    "blind_primary_raters": 2,
+    "adjudication_if_weighted_score_spread_gt": 15,
+    "adjudication_on_hard_failure_disagreement": true,
+    "adjudication_on_core_failure_disagreement": true,
+    "adjudication_on_materiality_disagreement": true,
+    "adjudicator_basis_required": true,
+    "llm_judge_role": "prescreen_only",
+    "calibration_items": 10,
+    "weighted_cohens_kappa_min": 0.7
+  }
+}

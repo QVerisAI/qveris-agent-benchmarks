@@ -1,0 +1,23 @@
+{
+  "fixture_id": "a-stock-data-layer-v1.2-B03",
+  "request": {
+    "capability": "qveris_finance.mkt_bars_eod",
+    "symbol": "002594.SZ",
+    "trading_days": 20
+  },
+  "responses": [
+    {
+      "status": "success",
+      "data": [
+        {
+          "date": "2026-07-13",
+          "close": 111.2,
+          "volume": 1000
+        }
+      ]
+    }
+  ],
+  "expected_reason_code": "insufficient_observations",
+  "allowed_retries": 0,
+  "content_hash": "sha256:57a540856229365e695c42a40c858364fbf114f0db0d6b14ce2e24b1bec2f450"
+}

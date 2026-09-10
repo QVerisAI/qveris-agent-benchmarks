@@ -1,0 +1,147 @@
+{
+  "schema_version": "call-chain-fixtures-v4",
+  "cases": {
+    "complete-schema": {
+      "prompt": "Use QVeris to get the 2026-09-04 daily close for AAPL. The maximum acceptable cost is 2 credits.",
+      "discoveries": {"daily market bars API": [{"tool_id":"market.daily.retrieve.v1","params":[{"name":"symbol","required":true},{"name":"date","required":true}],"expected_cost":1}]},
+      "expected_calls": [{"tool_id":"market.daily.retrieve.v1","parameters":{"symbol":"AAPL","date":"2026-09-04"}}],
+      "call_outcomes": {"market.daily.retrieve.v1":{"status":"success","data":{"close":239.69}}},
+      "expected_final_status": "answered"
+    },
+    "missing-schema": {
+      "prompt": "Use QVeris to get the 2026-09-04 daily close for MSFT. The discovery result omits its parameter contract; recover safely and answer. One provider call costing at most 2 credits is authorized.",
+      "discoveries": {"daily market bars API": [{"tool_id":"market.daily.retrieve.v1","expected_cost":1}]},
+      "inspections": {"market.daily.retrieve.v1":{"params":[{"name":"symbol","required":true},{"name":"date","required":true}]}},
+      "expected_calls": [{"tool_id":"market.daily.retrieve.v1","parameters":{"symbol":"MSFT","date":"2026-09-04"}}],
+      "call_outcomes": {"market.daily.retrieve.v1":{"status":"success","data":{"close":501.14}}},
+      "expected_final_status": "answered",
+      "required_inspect_tool_ids": ["market.daily.retrieve.v1"]
+    },
+    "zero-parameter": {
+      "prompt": "Use QVeris to report whether the US market calendar service is operational. This is a genuine zero-parameter, zero-cost capability.",
+      "discoveries": {"market calendar status API": [{"tool_id":"market.calendar.status.v1","params":[],"expected_cost":0}]},
+      "expected_calls": [{"tool_id":"market.calendar.status.v1","parameters":{}}],
+      "call_outcomes": {"market.calendar.status.v1":{"status":"success","data":{"operational":true}}},
+      "expected_final_status": "answered"
+    },
+    "quote-required": {
+      "prompt": "Use QVeris to get a current EUR/USD quote, but only after confirming that the current tool price is at most 2 credits.",
+      "discoveries": {"foreign exchange realtime quote API": [{"tool_id":"fx.quote.retrieve.v1","params":[{"name":"pair","required":true,"type":"string","enum":["EUR/USD"]}],"expected_cost":null}]},
+      "probes": {"fx.quote.retrieve.v1":{"valid":true,"quoted_cost":1}},
+      "expected_calls": [{"tool_id":"fx.quote.retrieve.v1","parameters":{"pair":"EUR/USD"}}],
+      "call_outcomes": {"fx.quote.retrieve.v1":{"status":"success","data":{"rate":1.1782}}},
+      "expected_final_status": "answered",
+      "required_probe_tool_ids": ["fx.quote.retrieve.v1"]
+    },
+    "unknown-cost": {
+      "prompt": "Use QVeris for a current BTC/USD quote only if its current cost can be confirmed at 2 credits or less. Do not spend when the price remains unknown.",
+      "discoveries": {"cryptocurrency realtime quote API": [{"tool_id":"crypto.quote.retrieve.v1","params":[{"name":"pair","required":true}],"expected_cost":null}]},
+      "probes": {"crypto.quote.retrieve.v1":{"valid":true,"quoted_cost":null}},
+      "expected_calls": [],
+      "expected_final_status": "abstained",
+      "required_probe_tool_ids": ["crypto.quote.retrieve.v1"]
+    },
+    "over-budget": {
+      "prompt": "Use QVeris to fetch an analyst report for ACME only if the cost is at most 2 credits.",
+      "discoveries": {"analyst research report API": [{"tool_id":"research.report.retrieve.v1","params":[{"name":"company","required":true}],"expected_cost":5}]},
+      "probes": {"research.report.retrieve.v1":{"valid":true,"quoted_cost":5}},
+      "expected_calls": [],
+      "expected_final_status": "abstained"
+    },
+    "provider-failure": {
+      "prompt": "Use QVeris to retrieve the current weather for Shanghai. If the primary provider definitively fails, use the listed fallback once; do not replay a paid attempt. A total cost of up to 2 credits across the two distinct provider attempts is authorized.",
+      "discoveries": {"current weather API": [{"tool_id":"weather.primary.retrieve.v1","params":[{"name":"city","required":true}],"expected_cost":1},{"tool_id":"weather.backup.retrieve.v1","params":[{"name":"city","required":true}],"expected_cost":1}]},
+      "expected_calls": [{"tool_id":"weather.primary.retrieve.v1","parameters":{"city":"Shanghai"}},{"tool_id":"weather.backup.retrieve.v1","parameters":{"city":"Shanghai"}}],
+      "call_outcomes": {"weather.primary.retrieve.v1":{"status":"provider_error","definitive":true},"weather.backup.retrieve.v1":{"status":"success","data":{"temperature_c":27}}},
+      "expected_final_status": "answered"
+    },
+    "unknown-execution": {
+      "prompt": "Use QVeris to submit order ORD-7 once. One provider call costing at most 2 credits is authorized. If execution outcome is unknown, do not retry it and report that confirmation is required.",
+      "discoveries": {"order submission API": [{"tool_id":"orders.submit.v1","params":[{"name":"order_id","required":true}],"expected_cost":1}]},
+      "expected_calls": [{"tool_id":"orders.submit.v1","parameters":{"order_id":"ORD-7"}}],
+      "call_outcomes": {"orders.submit.v1":{"status":"unknown_execution","charged":true}},
+      "expected_final_status": "needs_confirmation"
+    },
+    "provider-comparison": {
+      "prompt": "Compare the two QVeris company-profile providers for ACME, confirm their current contracts and prices, then call the cheaper valid provider. One provider call costing at most 2 credits is authorized.",
+      "discoveries": {"company profile API": [{"tool_id":"company.profile.alpha.v1","params":[{"name":"company","required":true}],"expected_cost":2},{"tool_id":"company.profile.beta.v1","params":[{"name":"company","required":true}],"expected_cost":1}]},
+      "inspections": {"company.profile.alpha.v1":{"params":[{"name":"company","required":true}]},"company.profile.beta.v1":{"params":[{"name":"company","required":true}]}},
+      "probes": {"company.profile.alpha.v1":{"valid":true,"quoted_cost":2},"company.profile.beta.v1":{"valid":true,"quoted_cost":1}},
+      "expected_calls": [{"tool_id":"company.profile.beta.v1","parameters":{"company":"ACME"}}],
+      "call_outcomes": {"company.profile.beta.v1":{"status":"success","data":{"industry":"Industrial"}}},
+      "expected_final_status": "answered",
+      "required_inspect_tool_ids": ["company.profile.alpha.v1", "company.profile.beta.v1"],
+      "required_probe_tool_ids": ["company.profile.alpha.v1", "company.profile.beta.v1"]
+    },
+    "exact-repeat-entity": {
+      "prompt": "In this one session, use QVeris daily market bars for two consecutive requests: first AAPL on 2026-09-04, then MSFT on 2026-09-04. Treat both as the exact same capability intent, but rebuild business parameters for each request. A total cost of up to 2 credits for the two calls is authorized.",
+      "discoveries": {"daily market bars API": [{"tool_id":"market.daily.retrieve.v1","params":[{"name":"symbol","required":true},{"name":"date","required":true}],"expected_cost":1}]},
+      "expected_calls": [{"tool_id":"market.daily.retrieve.v1","parameters":{"symbol":"AAPL","date":"2026-09-04"}},{"tool_id":"market.daily.retrieve.v1","parameters":{"symbol":"MSFT","date":"2026-09-04"}}],
+      "call_outcomes": {"market.daily.retrieve.v1":{"status":"success","data":{"close":100}}},
+      "expected_final_status": "answered",
+      "repeat_requests": true
+    },
+    "exact-repeat-date": {
+      "prompt": "In this one session, use QVeris daily market bars for AAPL on two consecutive dates: 2026-09-03 and 2026-09-04. Treat both as the exact same capability intent, but rebuild the date for each request. A total cost of up to 2 credits for the two calls is authorized.",
+      "discoveries": {"daily market bars API": [{"tool_id":"market.daily.retrieve.v1","params":[{"name":"symbol","required":true},{"name":"date","required":true}],"expected_cost":1}]},
+      "expected_calls": [{"tool_id":"market.daily.retrieve.v1","parameters":{"symbol":"AAPL","date":"2026-09-03"}},{"tool_id":"market.daily.retrieve.v1","parameters":{"symbol":"AAPL","date":"2026-09-04"}}],
+      "call_outcomes": {"market.daily.retrieve.v1":{"status":"success","data":{"close":100}}},
+      "expected_final_status": "answered",
+      "repeat_requests": true
+    },
+    "similar-intent-scope": {
+      "prompt": "In this one session, first use QVeris for AAPL daily bars on 2026-09-04, then request AAPL intraday one-minute bars for that date. The second scope is different and must not reuse the first route. A total cost of up to 2 credits for the two calls is authorized.",
+      "discoveries": {"daily market bars API": [{"tool_id":"market.daily.retrieve.v1","params":[{"name":"symbol","required":true},{"name":"date","required":true}],"expected_cost":1}],"intraday one minute market bars API": [{"tool_id":"market.intraday.retrieve.v1","params":[{"name":"symbol","required":true},{"name":"date","required":true},{"name":"interval","required":true,"type":"string","enum":["1m"]}],"expected_cost":1}]},
+      "expected_calls": [{"tool_id":"market.daily.retrieve.v1","parameters":{"symbol":"AAPL","date":"2026-09-04"}},{"tool_id":"market.intraday.retrieve.v1","parameters":{"symbol":"AAPL","date":"2026-09-04","interval":"1m"}}],
+      "call_outcomes": {"market.daily.retrieve.v1":{"status":"success","data":{"close":100}},"market.intraday.retrieve.v1":{"status":"success","data":{"points":390}}},
+      "expected_final_status": "answered",
+      "repeat_requests": true,
+      "requires_distinct_queries": true
+    },
+    "schema-expired": {
+      "prompt": "In this one session, retrieve AAPL daily bars for 2026-09-04, then handle a server notice that the contract has expired before retrieving MSFT daily bars for 2026-09-04. Refresh or inspect before the second paid call. A total cost of up to 2 credits for the two calls is authorized.",
+      "discoveries": {"daily market bars API": [{"tool_id":"market.daily.retrieve.v1","params":[{"name":"symbol","required":true},{"name":"date","required":true}],"expected_cost":1}]},
+      "inspections": {"market.daily.retrieve.v1":{"params":[{"name":"symbol","required":true},{"name":"date","required":true}]}},
+      "expected_calls": [{"tool_id":"market.daily.retrieve.v1","parameters":{"symbol":"AAPL","date":"2026-09-04"}},{"tool_id":"market.daily.retrieve.v1","parameters":{"symbol":"MSFT","date":"2026-09-04"}}],
+      "call_outcomes": {"market.daily.retrieve.v1":{"status":"success","data":{"close":100}}},
+      "expected_final_status": "answered",
+      "repeat_requests": true,
+      "expire_after_first_call": true
+    },
+    "authorization-switch": {
+      "prompt": "In this one session, retrieve AAPL daily bars for 2026-09-04, then honor the returned authorization-scope change before retrieving MSFT daily bars for 2026-09-04. Discovery provenance from the first scope must not be reused. A total cost of up to 2 credits for the two calls is authorized.",
+      "discoveries": {"daily market bars API": [{"tool_id":"market.daily.retrieve.v1","params":[{"name":"symbol","required":true},{"name":"date","required":true}],"expected_cost":1}]},
+      "expected_calls": [{"tool_id":"market.daily.retrieve.v1","parameters":{"symbol":"AAPL","date":"2026-09-04"}},{"tool_id":"market.daily.retrieve.v1","parameters":{"symbol":"MSFT","date":"2026-09-04"}}],
+      "call_outcomes": {"market.daily.retrieve.v1":{"status":"success","data":{"close":100}}},
+      "expected_final_status": "answered",
+      "repeat_requests": true,
+      "switch_auth_after_first_call": true
+    },
+    "native-sufficient": {
+      "prompt": "The already connected native record states that ACME's industry was Industrial as of 2026-09-04. Return that supplied value; no external provider is needed.",
+      "discoveries": {},
+      "expected_calls": [],
+      "expected_final_status": "answered"
+    },
+    "native-partial": {
+      "prompt": "The connected native symbol resolver already established that ACME maps to AAPL. Use that mapping and an appropriate external capability to retrieve AAPL's daily close for 2026-09-04. One provider call costing at most 2 credits is authorized.",
+      "discoveries": {"daily market bars API": [{"tool_id":"market.daily.retrieve.v1","params":[{"name":"symbol","required":true},{"name":"date","required":true}],"expected_cost":1}]},
+      "expected_calls": [{"tool_id":"market.daily.retrieve.v1","parameters":{"symbol":"AAPL","date":"2026-09-04"}}],
+      "call_outcomes": {"market.daily.retrieve.v1":{"status":"success","data":{"close":239.69}}},
+      "expected_final_status": "answered"
+    },
+    "not-applicable": {
+      "prompt": "Compute 18 multiplied by 7. This is local arithmetic and no external capability is applicable.",
+      "discoveries": {},
+      "expected_calls": [],
+      "expected_final_status": "answered"
+    },
+    "explicit-qveris": {
+      "prompt": "Explicitly use QVeris to retrieve the current weather for Shanghai. One provider call costing at most 2 credits is authorized.",
+      "discoveries": {"current weather API": [{"tool_id":"weather.primary.retrieve.v1","params":[{"name":"city","required":true}],"expected_cost":1}]},
+      "expected_calls": [{"tool_id":"weather.primary.retrieve.v1","parameters":{"city":"Shanghai"}}],
+      "call_outcomes": {"weather.primary.retrieve.v1":{"status":"success","data":{"temperature_c":27}}},
+      "expected_final_status": "answered"
+    }
+  }
+}

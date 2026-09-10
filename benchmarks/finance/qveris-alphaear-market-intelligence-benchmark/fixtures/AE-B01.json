@@ -1,0 +1,23 @@
+{
+  "fixture_id": "alphaear-market-intelligence-v2.2-AE-B01",
+  "request": {
+    "capability": "qveris_finance.ref_symbology",
+    "symbol": "600519.SH"
+  },
+  "responses": [
+    {
+      "status": "success",
+      "data": {
+        "symbol": "600519.HK",
+        "asset_type": "fund",
+        "currency": "HKD"
+      }
+    }
+  ],
+  "expected_reason_code": "semantic_mismatch",
+  "expected_reason_codes": [
+    "semantic_mismatch"
+  ],
+  "allowed_retries": 0,
+  "content_hash": "sha256:6b63d811e40eafdc8dd0cffcb3759a15a961da0a5d9b2279922a883fda8e2742"
+}

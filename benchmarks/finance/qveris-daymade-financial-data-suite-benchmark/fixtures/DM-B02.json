@@ -1,0 +1,28 @@
+{
+  "fixture_id": "daymade-financial-data-suite-v2.2-DM-B02",
+  "request": {
+    "capability": "qveris_finance.fundamentals_is",
+    "symbol": "NVDA",
+    "fiscal_period": "FY"
+  },
+  "responses": [
+    {
+      "status": "success",
+      "data": {
+        "fiscal_period": "Q3"
+      }
+    },
+    {
+      "status": "success",
+      "data": {
+        "period_type": "TTM"
+      }
+    }
+  ],
+  "expected_reason_code": "period_mismatch",
+  "expected_reason_codes": [
+    "period_mismatch"
+  ],
+  "allowed_retries": 1,
+  "content_hash": "sha256:e0c5c7f8f163a159fdc71a22b2053fc36877c56eabfbbd4e7b6b64a3ad7ed879"
+}

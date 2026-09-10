@@ -1,0 +1,23 @@
+{
+  "fixture_id": "daymade-financial-data-suite-v2.2-DM-B04",
+  "request": {
+    "capability": "qveris_finance.fundamentals_derived_ratios",
+    "symbol": "META"
+  },
+  "responses": [
+    {
+      "status": "success",
+      "data": {
+        "pe_ttm": 24,
+        "ps_ratio_ttm": 8,
+        "pb_ratio_ttm": 7
+      }
+    }
+  ],
+  "expected_reason_code": "alias_normalized",
+  "expected_reason_codes": [
+    "alias_normalized"
+  ],
+  "allowed_retries": 0,
+  "content_hash": "sha256:1ab905c2a0e78b578f7fa4fcbb528216fe20a49e115c4ab4970a8da23e51e2ff"
+}

@@ -1,0 +1,25 @@
+{
+  "fixture_id": "a-stock-data-layer-v1.2-B06",
+  "request": {
+    "capability": "qveris_finance.fundamentals_derived_ratios",
+    "symbol": "300750.SZ"
+  },
+  "responses": [
+    {
+      "status": "error",
+      "http_status": 503,
+      "error": "provider unavailable"
+    },
+    {
+      "status": "timeout",
+      "error": "timeout"
+    },
+    {
+      "status": "error",
+      "error": "all_candidates_failed"
+    }
+  ],
+  "expected_reason_code": "all_candidates_failed",
+  "allowed_retries": 2,
+  "content_hash": "sha256:399fa21df637399f3a0ea07dc3662c146337dd7d03c5d78b57c65b93bbc12095"
+}

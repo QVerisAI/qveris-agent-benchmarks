@@ -1,0 +1,12 @@
+{
+  "schema_version": "1.0.0",
+  "benchmark_profile": "a-stock-data-layer-v1.2",
+  "benchmark_version": "1.0.1",
+  "source_spec": {
+    "title": "qveris-a-stock-data-layer 可复现、可审计、可实际执行的全能力测评规范",
+    "original_filename": "pasted-text.txt",
+    "content_hash": "sha256:7aedbfb8569ca3acad33063ff34af36eeb3deb0362add7560398e5404592bdd6",
+    "byte_length": 35330
+  },
+  "derivation_policy": "Every generated task maps to the source specification's atomic, workflow, or boundary section and retains its source task identifier."
+}

@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "QVeris AlphaEar Market Intelligence Benchmark Evidence Snapshot",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "benchmark_profile",
+    "rubric_profile",
+    "task_id",
+    "track",
+    "runtime_variables",
+    "status",
+    "evidence",
+    "assertions",
+    "canonical_assertions",
+    "content_hash"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string"
+    },
+    "benchmark_profile": {
+      "const": "alphaear-market-intelligence-v2.2"
+    },
+    "rubric_profile": {
+      "const": "ALPHAEAR_RUBRIC_V2.2"
+    },
+    "task_id": {
+      "type": "string"
+    },
+    "comparison_task_id": {
+      "type": "string"
+    },
+    "track": {
+      "enum": [
+        "qveris",
+        "open"
+      ]
+    },
+    "runtime_variables": {
+      "type": "object"
+    },
+    "status": {
+      "enum": [
+        "pending_capture",
+        "frozen"
+      ]
+    },
+    "captured_at": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "expires_at": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "assertions": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "canonical_assertions": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "content_hash": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    }
+  },
+  "additionalProperties": true
+}

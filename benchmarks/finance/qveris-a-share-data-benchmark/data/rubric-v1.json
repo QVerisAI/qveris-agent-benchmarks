@@ -1,0 +1,271 @@
+{
+  "rubric_profile": "A_SHARE_DATA_RUBRIC_V1",
+  "benchmark_profile": "a-share-data-v1.0",
+  "version": "1.0.1",
+  "score": {
+    "financial": 90,
+    "technical": 10,
+    "total": 100
+  },
+  "dimensions": {
+    "security_market_quote_accuracy": {
+      "label": "证券、市场与报价事实准确性",
+      "weight": 18,
+      "kind": "financial",
+      "criteria": "发行人、证券、市场、交易所、资产类型、币种、价格、量额、单位和时间戳正确。"
+    },
+    "time_window_adjustment_discipline": {
+      "label": "时点、交易日、窗口与复权纪律",
+      "weight": 18,
+      "kind": "financial",
+      "criteria": "T0、AS_OF、D20/D60、事件窗口、报价状态、复权和端点一致，无未来泄漏。"
+    },
+    "price_volume_technical_calculation": {
+      "label": "量价与技术指标计算",
+      "weight": 14,
+      "kind": "financial",
+      "criteria": "收益、回撤、波动、MA、RSI、MACD、BOLL 的公式、参数、观察数和预热期可复核。"
+    },
+    "event_news_timeline_semantics": {
+      "label": "事件、新闻与时间线语义",
+      "weight": 14,
+      "kind": "financial",
+      "criteria": "事件日、披露日、主体、窗口、类型及新闻相关性正确，事实与因果分开。"
+    },
+    "industry_theme_proxy_boundary": {
+      "label": "行业、主题、异动与热度代理边界",
+      "weight": 10,
+      "kind": "financial",
+      "criteria": "分类体系和代理字段语义正确，不把代理冒充行业资金流或完整热度。"
+    },
+    "ah_ipo_conditional_boundary": {
+      "label": "A+H、IPO 与条件能力边界",
+      "weight": 6,
+      "kind": "financial",
+      "criteria": "映射、币种、上市类别和 IPO 类型只在验证字段充分时使用。"
+    },
+    "analysis_risk_research_boundary": {
+      "label": "分析解释、风险与研究边界",
+      "weight": 10,
+      "kind": "financial",
+      "criteria": "结论强度不超过证据，技术指标不转为买卖、仓位或执行建议。"
+    },
+    "capability_track_data_quality": {
+      "label": "通用执行契约",
+      "weight": 5,
+      "kind": "technical",
+      "criteria": "两轨统一按 variant、独立会话、总外部调用预算和授权证据渠道评分；CAP 与接口格式另作诊断。"
+    },
+    "output_evidence_trace": {
+      "label": "通用证据输出契约",
+      "weight": 5,
+      "kind": "technical",
+      "criteria": "两轨统一按非空回答、材料证据、时间上下文、缺失披露和研究边界评分；专项结构与 trace 另作诊断。"
+    }
+  },
+  "anchors": {
+    "0": "缺失、反向错误、未来泄漏或越过研究边界",
+    "1": "严重不足且核心能力未完成",
+    "2": "基本可用但存在重要缺口",
+    "3": "较完整且大部分可复核",
+    "4": "金融研究人员可复核、解释并用于研究流程"
+  },
+  "hard_failure_caps": {
+    "fabricated_critical_evidence": 0,
+    "future_information_leakage": 0,
+    "wrong_entity_core_conclusion": 20,
+    "material_period_basis_unit_error": 40,
+    "rejected_evidence_supports_conclusion": 50,
+    "proxy_semantics_fabrication": 50,
+    "conditional_capability_fabrication": 60,
+    "investment_instruction": 60,
+    "financial_subscore_below_54": 69
+  },
+  "pass_thresholds": {
+    "atomic": {
+      "total": 75,
+      "financial": 68
+    },
+    "workflow": {
+      "total": 80,
+      "financial": 74,
+      "named_dimension_floor": 0.6
+    },
+    "boundary": {
+      "total": 75,
+      "financial": 68,
+      "expected_action_required": true
+    }
+  },
+  "workflow_floor_dimensions": [
+    "time_window_adjustment_discipline",
+    "price_volume_technical_calculation",
+    "event_news_timeline_semantics",
+    "analysis_risk_research_boundary"
+  ],
+  "capability_group_weights": {
+    "identity_quote": 0.15,
+    "market_history": 0.25,
+    "technical_context": 0.2,
+    "events_news": 0.15,
+    "classification_proxy": 0.1,
+    "conditional_capabilities": 0.1,
+    "data_quality": 0.05
+  },
+  "publication_requirements": [
+    {
+      "id": "entity_market_error_rate",
+      "metric": "error_tag_rate",
+      "variants": [
+        "qveris-cli",
+        "qveris-mcp"
+      ],
+      "minimum_observations": 1,
+      "operator": "lt",
+      "threshold": 0.01,
+      "error_tags": [
+        "entity_security_error"
+      ],
+      "capability_groups": [
+        "identity_quote"
+      ]
+    },
+    {
+      "id": "market_window_error_rate",
+      "metric": "error_tag_rate",
+      "variants": [
+        "qveris-cli",
+        "qveris-mcp"
+      ],
+      "minimum_observations": 1,
+      "operator": "eq",
+      "threshold": 0,
+      "error_tags": [
+        "quote_timing_error",
+        "market_window_basis_error",
+        "future_leakage"
+      ],
+      "capability_groups": [
+        "identity_quote",
+        "market_history"
+      ]
+    },
+    {
+      "id": "technical_indicator_discipline_error_rate",
+      "metric": "error_tag_rate",
+      "variants": [
+        "qveris-cli",
+        "qveris-mcp"
+      ],
+      "minimum_observations": 1,
+      "operator": "eq",
+      "threshold": 0,
+      "error_tags": [
+        "technical_calculation_error",
+        "research_boundary_error"
+      ],
+      "capability_groups": [
+        "technical_context"
+      ]
+    },
+    {
+      "id": "event_proxy_semantics_error_rate",
+      "metric": "error_tag_rate",
+      "variants": [
+        "qveris-cli",
+        "qveris-mcp"
+      ],
+      "minimum_observations": 1,
+      "operator": "eq",
+      "threshold": 0,
+      "error_tags": [
+        "event_semantics_error",
+        "news_entity_mixing_error",
+        "proxy_semantics_error"
+      ],
+      "capability_groups": [
+        "events_news",
+        "classification_proxy"
+      ]
+    },
+    {
+      "id": "conditional_capability_fabrication_rate",
+      "metric": "error_tag_rate",
+      "variants": [
+        "qveris-cli",
+        "qveris-mcp"
+      ],
+      "minimum_observations": 1,
+      "operator": "eq",
+      "threshold": 0,
+      "error_tags": [
+        "conditional_capability_error"
+      ],
+      "capability_groups": [
+        "conditional_capabilities"
+      ]
+    },
+    {
+      "id": "all_boundaries",
+      "metric": "boundary_pass_rate",
+      "variants": [
+        "qveris-cli",
+        "qveris-mcp"
+      ],
+      "minimum_observations": 1,
+      "operator": "eq",
+      "threshold": 1,
+      "task_classes": [
+        "boundary"
+      ]
+    },
+    {
+      "id": "prohibited_output_rate",
+      "metric": "error_tag_rate",
+      "variants": [
+        "baseline",
+        "qveris-cli",
+        "qveris-mcp"
+      ],
+      "minimum_observations": 1,
+      "operator": "eq",
+      "threshold": 0,
+      "error_tags": [
+        "research_boundary_error",
+        "prohibited_output"
+      ]
+    }
+  ],
+  "pair_timing": {
+    "required_runtime_variable": "T0",
+    "max_start_delta_ms": 1800000,
+    "missing_or_late_pair_action": "exclude_from_paired_lift_and_block_formal_publication"
+  },
+  "technical_scoring_contract": {
+    "comparable_across_tracks": true,
+    "capability_checks": [
+      "track_variant_match",
+      "independent_session",
+      "total_call_budget_respected",
+      "authorized_evidence_channel"
+    ],
+    "output_checks": [
+      "non_empty_answer",
+      "material_evidence_present",
+      "temporal_context_present",
+      "missing_data_disclosed",
+      "research_boundary"
+    ],
+    "interface_diagnostics_affect_score": false,
+    "interface_diagnostics_note": "Track-specific CLI/MCP/Open formatting and trace-contract checks are reported separately and do not change the 10-point technical score."
+  },
+  "human_review": {
+    "blind_primary_raters": 2,
+    "adjudication_if_weighted_score_spread_gt": 15,
+    "adjudication_on_hard_failure_disagreement": true,
+    "adjudicator_basis_required": true,
+    "llm_judge_role": "prescreen_only",
+    "calibration_items": 10,
+    "weighted_cohens_kappa_min": 0.7
+  }
+}

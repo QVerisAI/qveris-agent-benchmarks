@@ -1,0 +1,12 @@
+{
+  "schema_version": "1.0.0",
+  "benchmark_profile": "daymade-financial-data-suite-v2.2",
+  "benchmark_version": "1.0.1",
+  "source_spec": {
+    "title": "BENCHMARK SPECIFICATION · ADAPTED V2.2 跨市场金融数据包、A 股日报与行业数据的双轨金融评测规范",
+    "original_filename": "pasted-text.txt",
+    "content_hash": "sha256:30204e2b08c58fb18181bbe964f324649f6edefeac8cf224688293e5b78ce4ab",
+    "byte_length": 35484
+  },
+  "derivation_policy": "Every generated task maps to the source specification's atomic, workflow, or boundary section and retains its source task identifier."
+}

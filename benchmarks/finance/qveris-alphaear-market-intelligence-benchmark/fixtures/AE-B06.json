@@ -1,0 +1,26 @@
+{
+  "fixture_id": "alphaear-market-intelligence-v2.2-AE-B06",
+  "request": {
+    "capability": "qveris_finance.mkt_l1_rt",
+    "symbol": "600519.SH"
+  },
+  "responses": [
+    {
+      "status": "error",
+      "http_status": 503
+    },
+    {
+      "status": "timeout"
+    },
+    {
+      "status": "error",
+      "error": "all_candidates_failed"
+    }
+  ],
+  "expected_reason_code": "all_candidates_failed",
+  "expected_reason_codes": [
+    "all_candidates_failed"
+  ],
+  "allowed_retries": 2,
+  "content_hash": "sha256:df99e7411c41581b63444ddf953cd5675db4e3f04ad41bad4153800ba0b81d48"
+}

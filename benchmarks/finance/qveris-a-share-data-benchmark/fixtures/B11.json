@@ -1,0 +1,15 @@
+{
+  "fixture_id": "a-share-data-v1.0-B11",
+  "request": {
+    "web_evidence_fixture": true,
+    "user_text": "Other Co 新��发布（仅搜索摘要）"
+  },
+  "responses": [],
+  "expected_reason_code": "entity_mix",
+  "expected_reason_codes": [
+    "entity_mix",
+    "encoding_artifact"
+  ],
+  "allowed_retries": 0,
+  "content_hash": "sha256:a218ff1ae4faec9c55d09890b553d03f4c9389d307fa2270ad531c82a56950fb"
+}

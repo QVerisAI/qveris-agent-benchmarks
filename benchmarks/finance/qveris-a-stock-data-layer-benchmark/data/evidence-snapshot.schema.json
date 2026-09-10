@@ -1,0 +1,104 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://qveris.local/benchmark/a-stock-data-layer/evidence-snapshot.schema.json",
+  "title": "Frozen evidence snapshot record",
+  "type": "object",
+  "required": ["schema_version", "benchmark_profile", "rubric_profile", "task_id", "comparison_task_id", "track", "cut_off", "captured_at", "expires_at", "status", "runtime_variables", "evidence", "assertions", "canonical_assertions", "content_hash"],
+  "properties": {
+    "schema_version": { "type": "string", "const": "1.0.0" },
+    "benchmark_profile": { "type": "string", "const": "a-stock-data-layer-v1.2" },
+    "rubric_profile": { "type": "string", "const": "RUBRIC_V1" },
+    "benchmark_version": { "type": "string" },
+    "run_id": { "type": ["string", "null"] },
+    "task_id": { "type": "string" },
+    "comparison_task_id": { "type": "string" },
+    "track": { "enum": ["qveris", "open"] },
+    "cut_off": { "type": "string", "minLength": 1 },
+    "captured_at": { "type": "string", "format": "date-time" },
+    "expires_at": { "type": "string", "format": "date-time" },
+    "status": { "const": "frozen" },
+    "runtime_variables": { "type": "object" },
+    "content_hash": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["request_params", "response_time", "entity", "raw_fields", "status", "content_hash"],
+        "properties": {
+          "request_params": { "type": "object" },
+          "response_time": { "type": "string" },
+          "entity": { "type": "object" },
+          "raw_fields": {},
+          "unit": { "type": ["string", "null"] },
+          "currency": { "type": ["string", "null"] },
+          "financial_period": { "type": ["object", "null"] },
+          "source_url": { "type": ["string", "null"] },
+          "http_status": { "type": ["integer", "null"], "minimum": 100, "maximum": 599 },
+          "body_hash": { "type": ["string", "null"], "pattern": "^sha256:[a-f0-9]{64}$" },
+          "source_level": { "enum": ["exchange", "regulator", "statutory_filing", "official_statistics", "index_provider", "company_ir", "reputable_secondary", "qveris_cap", "unknown"] },
+          "published_at": { "type": ["string", "null"], "format": "date-time" },
+          "capability": { "type": ["string", "null"] },
+          "status": { "type": "string" },
+          "rejection_reason": { "type": ["string", "null"] },
+          "content_hash": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" }
+        },
+        "additionalProperties": true
+      }
+    },
+    "assertions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["field_id", "entity", "value", "source_indexes", "content_hash"],
+        "properties": {
+          "field_id": { "type": "string", "minLength": 1 },
+          "entity": { "type": ["string", "object"] },
+          "value": {},
+          "unit": { "type": ["string", "null"] },
+          "currency": { "type": ["string", "null"] },
+          "financial_period": { "type": ["object", "null"] },
+          "adjustment_basis": { "type": ["string", "null"] },
+          "trading_day_window": { "type": ["object", "null"] },
+          "formula": { "type": ["string", "null"] },
+          "tolerance": { "type": ["object", "number", "null"] },
+          "source_indexes": { "type": "array", "items": { "type": "integer", "minimum": 0 } },
+          "content_hash": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" }
+        },
+        "additionalProperties": true
+      }
+    },
+    "canonical_assertions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["field_id", "entity", "value", "content_hash"],
+        "properties": {
+          "field_id": { "type": "string", "minLength": 1 },
+          "entity": { "type": ["string", "object"] },
+          "value": {},
+          "unit": { "type": ["string", "null"] },
+          "currency": { "type": ["string", "null"] },
+          "financial_period": { "type": ["object", "null"] },
+          "adjustment_basis": { "type": ["string", "null"] },
+          "trading_day_window": { "type": ["object", "null"] },
+          "formula": { "type": ["string", "null"] },
+          "tolerance": { "type": ["object", "number", "null"] },
+          "content_hash": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" }
+        },
+        "additionalProperties": true
+      }
+    },
+    "deterministic_assessment": {
+      "type": "object",
+      "properties": {
+        "checks": { "type": "array", "items": { "type": "object" } },
+        "confirmed_hard_failures": { "type": "array", "items": { "type": "string" } },
+        "core_failures": { "type": "array" },
+        "boundary_action_hit": { "type": "boolean" }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,21 @@
+{
+  "fixture_id": "a-share-data-v1.0-B08",
+  "request": {
+    "capability": "qveris_finance.event_calendar_ipo",
+    "window": "IPO_WINDOW"
+  },
+  "responses": [
+    {
+      "status": "error",
+      "http_status": 404,
+      "error": "invalid_capability"
+    }
+  ],
+  "expected_reason_code": "capability_unavailable",
+  "expected_reason_codes": [
+    "capability_unavailable"
+  ],
+  "allowed_retries": 0,
+  "allowed_cap_metadata_checks": 1,
+  "content_hash": "sha256:73de14137bb2f7d18c17a041976c6eac66318f249746adeccad6a443a61aff33"
+}

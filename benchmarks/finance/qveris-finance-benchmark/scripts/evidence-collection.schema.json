@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["records"],
+  "properties": {
+    "records": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["task_id", "evidence", "assertions"],
+        "properties": {
+          "task_id": { "type": "string" },
+          "evidence": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "required": ["request_params_json", "response_time", "entity_json", "raw_fields_json", "unit", "currency", "financial_period_json", "source_url", "http_status", "body_hash", "source_level", "published_at", "capability", "status", "rejection_reason"],
+              "properties": {
+                "request_params_json": { "type": "string" },
+                "response_time": { "type": "string" },
+                "entity_json": { "type": "string" },
+                "raw_fields_json": { "type": "string" },
+                "unit": { "type": ["string", "null"] },
+                "currency": { "type": ["string", "null"] },
+                "financial_period_json": { "type": ["string", "null"] },
+                "source_url": { "type": ["string", "null"] },
+                "http_status": { "type": ["integer", "null"] },
+                "body_hash": {
+                  "anyOf": [
+                    { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" },
+                    { "type": "null" }
+                  ]
+                },
+                "source_level": {
+                  "enum": [
+                    "qveris_cap",
+                    "exchange",
+                    "regulator",
+                    "statutory_filing",
+                    "official_statistics",
+                    "index_provider",
+                    "company_ir",
+                    "reputable_secondary"
+                  ]
+                },
+                "published_at": { "type": ["string", "null"] },
+                "capability": { "type": ["string", "null"] },
+                "status": { "enum": ["accepted", "rejected"] },
+                "rejection_reason": { "type": ["string", "null"] }
+              },
+              "additionalProperties": false
+            }
+          },
+          "assertions": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "required": ["field_id", "entity_json", "value_json", "unit", "currency", "financial_period_json", "adjustment_basis", "trading_day_window_json", "formula", "tolerance_json", "source_indexes", "verification_status"],
+              "properties": {
+                "field_id": { "type": "string" },
+                "entity_json": { "type": "string" },
+                "value_json": { "type": "string" },
+                "unit": { "type": ["string", "null"] },
+                "currency": { "type": ["string", "null"] },
+                "financial_period_json": { "type": ["string", "null"] },
+                "adjustment_basis": { "type": ["string", "null"] },
+                "trading_day_window_json": { "type": ["string", "null"] },
+                "formula": { "type": ["string", "null"] },
+                "tolerance_json": { "type": ["string", "null"] },
+                "source_indexes": { "type": "array", "minItems": 1, "items": { "type": "integer", "minimum": 0 } },
+                "verification_status": { "type": "string", "const": "manual_review" }
+              },
+              "additionalProperties": false
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

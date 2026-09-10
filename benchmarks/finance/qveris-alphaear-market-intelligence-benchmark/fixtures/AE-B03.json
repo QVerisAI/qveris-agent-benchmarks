@@ -1,0 +1,28 @@
+{
+  "fixture_id": "alphaear-market-intelligence-v2.2-AE-B03",
+  "request": {
+    "capability": "qveris_finance.fundamentals_is",
+    "symbol": "600519.SH",
+    "fiscal_period": "FY"
+  },
+  "responses": [
+    {
+      "status": "success",
+      "data": {
+        "fiscal_period": "latest-quarter"
+      }
+    },
+    {
+      "status": "success",
+      "data": {
+        "period_type": "TTM"
+      }
+    }
+  ],
+  "expected_reason_code": "period_mismatch",
+  "expected_reason_codes": [
+    "period_mismatch"
+  ],
+  "allowed_retries": 1,
+  "content_hash": "sha256:a2590f136ab75fe87c194684b433790e8e54087c8635a47679a79609768be4de"
+}

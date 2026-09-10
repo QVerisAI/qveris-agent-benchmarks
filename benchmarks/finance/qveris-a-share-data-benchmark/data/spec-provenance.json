@@ -1,0 +1,12 @@
+{
+  "schema_version": "1.0.0",
+  "benchmark_profile": "a-share-data-v1.0",
+  "benchmark_version": "1.0.1",
+  "source_spec": {
+    "title": "qveris-a-share-data 可复现、可审计、金融专业性双轨评测规范",
+    "original_filename": "pasted-text.txt",
+    "content_hash": "sha256:6d1c11615cbdf3fd6fa2d3d68784367785695234f21e669467118ac7b9ea8720",
+    "byte_length": 21482
+  },
+  "derivation_policy": "Every generated task maps to the source specification's atomic, workflow, or boundary section and retains its source task identifier."
+}

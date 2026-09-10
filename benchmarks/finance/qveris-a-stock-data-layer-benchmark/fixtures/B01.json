@@ -1,0 +1,23 @@
+{
+  "fixture_id": "a-stock-data-layer-v1.2-B01",
+  "request": {
+    "capability": "qveris_finance.ref_symbology",
+    "symbol": "600519.SH"
+  },
+  "responses": [
+    {
+      "http_status": 200,
+      "status": "success",
+      "data": {
+        "symbol": "600519.HK",
+        "exchange": "HKEX",
+        "asset_type": "common_stock",
+        "issuer": "Unrelated Holdings Ltd",
+        "currency": "HKD"
+      }
+    }
+  ],
+  "expected_reason_code": "semantic_mismatch",
+  "allowed_retries": 0,
+  "content_hash": "sha256:12a52de6daa59e0a6d8bc968320150d89f1368042029ba6aed7c7133b08c0777"
+}

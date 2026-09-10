@@ -1,0 +1,17 @@
+{
+  "fixture_id": "a-share-factor-screen-v1.0-B09",
+  "request": {
+    "user_text": "未提供股票清单或冻结宇宙，要求全 A 股筛选",
+    "controls": {
+      "max_calls": 3
+    }
+  },
+  "responses": [],
+  "expected_reason_code": "universe_unavailable",
+  "expected_reason_codes": [
+    "universe_unavailable"
+  ],
+  "allowed_retries": 0,
+  "max_calls": 3,
+  "content_hash": "sha256:0b38cbb415b0f307e348d0869c7250b87772e8d04efa3901a09551dae28d5d67"
+}

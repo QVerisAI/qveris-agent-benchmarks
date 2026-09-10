@@ -1,0 +1,26 @@
+{
+  "fixture_id": "a-share-data-v1.0-B03",
+  "request": {
+    "capability": "qveris_finance.mkt_bars_adjusted",
+    "symbol": "300750.SZ",
+    "window": "D60"
+  },
+  "responses": [
+    {
+      "status": "success",
+      "data": [
+        {
+          "date": "AFTER_AS_OF",
+          "adjustment": "none"
+        }
+      ]
+    }
+  ],
+  "expected_reason_code": "window_mismatch",
+  "expected_reason_codes": [
+    "window_mismatch",
+    "future_leakage"
+  ],
+  "allowed_retries": 0,
+  "content_hash": "sha256:3988cc15318d15a0d68ea303b9fb8a0b9f735a0b2636e08bfd6b3b77fd52cef6"
+}

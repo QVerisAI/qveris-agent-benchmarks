@@ -1,0 +1,1041 @@
+{
+  "schema_version": "1.0.0",
+  "benchmark_profile": "a-share-factor-screen-v1.0",
+  "benchmark_version": "1.0.1",
+  "source_spec_hash": "sha256:aff8f3b98e23e041f5cf242567f8a085ced738b1f3c9b5b668061e38a3c47d59",
+  "task_count": 57,
+  "comparison_pair_count": 23,
+  "boundary_count": 11,
+  "entries": [
+    {
+      "task_id": "S01-Q",
+      "comparison_task_id": "S01",
+      "task_class": "atomic",
+      "track": "qveris",
+      "source_refs": [
+        "section:5",
+        "task:S01"
+      ],
+      "expected_capabilities": [
+        "qveris_finance.ref_symbology"
+      ],
+      "web_evidence_policy": null,
+      "expected_web_evidence": [],
+      "bypassed_capabilities": [],
+      "acceptance_count": 2,
+      "machine_rule_ids": []
+    },
+    {
+      "task_id": "S01-O",
+      "comparison_task_id": "S01",
+      "task_class": "atomic",
+      "track": "open",
+      "source_refs": [
+        "section:5",
+        "task:S01"
+      ],
+      "expected_capabilities": [],
+      "web_evidence_policy": null,
+      "expected_web_evidence": [],
+      "bypassed_capabilities": [],
+      "acceptance_count": 2,
+      "machine_rule_ids": []
+    },
+    {
+      "task_id": "S02-Q",
+      "comparison_task_id": "S02",
+      "task_class": "atomic",
+      "track": "qveris",
+      "source_refs": [
+        "section:5",
+        "task:S02"
+      ],
+      "expected_capabilities": [
+        "qveris_finance.ref_symbology",
+        "qveris_finance.ref_security_master"
+      ],
+      "web_evidence_policy": null,
+      "expected_web_evidence": [],
+      "bypassed_capabilities": [],
+      "acceptance_count": 2,
+      "machine_rule_ids": []
+    },
+    {
+      "task_id": "S02-O",
+      "comparison_task_id": "S02",
+      "task_class": "atomic",
+      "track": "open",
+      "source_refs": [
+        "section:5",
+        "task:S02"
+      ],
+      "expected_capabilities": [],
+      "web_evidence_policy": null,
+      "expected_web_evidence": [],
+      "bypassed_capabilities": [],
+      "acceptance_count": 2,
+      "machine_rule_ids": []
+    },
+    {
+      "task_id": "S03-Q",
+      "comparison_task_id": "S03",
+      "task_class": "atomic",
+      "track": "qveris",
+      "source_refs": [
+        "section:5",
+        "task:S03"
+      ],
+      "expected_capabilities": [
+        "qveris_finance.ref_symbology",
+        "qveris_finance.ref_security_master"
+      ],
+      "web_evidence_policy": null,
+      "expected_web_evidence": [],
+      "bypassed_capabilities": [],
+      "acceptance_count": 2,
+      "machine_rule_ids": []
+    },
+    {
+      "task_id": "S03-O",
+      "comparison_task_id": "S03",
+      "task_class": "atomic",
+      "track": "open",
+      "source_refs": [
+        "section:5",
+        "task:S03"
+      ],
+      "expected_capabilities": [],
+      "web_evidence_policy": null,
+      "expected_web_evidence": [],
+      "bypassed_capabilities": [],
+      "acceptance_count": 2,
+      "machine_rule_ids": []
+    },
+    {
+      "task_id": "S04-Q",
+      "comparison_task_id": "S04",
+      "task_class": "atomic",
+      "track": "qveris",
+      "source_refs": [
+        "section:5",
+        "task:S04"
+      ],
+      "expected_capabilities": [
+        "qveris_finance.ref_symbology",
+        "qveris_finance.ref_security_master"
+      ],
+      "web_evidence_policy": null,
+      "expected_web_evidence": [],
+      "bypassed_capabilities": [],
+      "acceptance_count": 3,
+      "machine_rule_ids": []
+    },
+    {
+      "task_id": "S04-O",
+      "comparison_task_id": "S04",
+      "task_class": "atomic",
+      "track": "open",
+      "source_refs": [
+        "section:5",
+        "task:S04"
+      ],
+      "expected_capabilities": [],
+      "web_evidence_policy": null,
+      "expected_web_evidence": [],
+      "bypassed_capabilities": [],
+      "acceptance_count": 3,
+      "machine_rule_ids": []
+    },
+    {
+      "task_id": "S05-Q",
+      "comparison_task_id": "S05",
+      "task_class": "atomic",
+      "track": "qveris",
+      "source_refs": [
+        "section:5",
+        "task:S05"
+      ],
+      "expected_capabilities": [
+        "qveris_finance.ref_classification_industry"
+      ],
+      "web_evidence_policy": null,
+      "expected_web_evidence": [],
+      "bypassed_capabilities": [],
+      "acceptance_count": 1,
+      "machine_rule_ids": []
+    },
+    {
+      "task_id": "S05-O",
+      "comparison_task_id": "S05",
+      "task_class": "atomic",
+      "track": "open",
+      "source_refs": [
+        "section:5",
+        "task:S05"
+      ],
+      "expected_capabilities": [],
+      "web_evidence_policy": null,
+      "expected_web_evidence": [],
+      "bypassed_capabilities": [],
+      "acceptance_count": 1,
+      "machine_rule_ids": []
+    },
+    {
+      "task_id": "S06-Q",
+      "comparison_task_id": "S06",
+      "task_class": "atomic",
+      "track": "qveris",
+      "source_refs": [
+        "section:5",
+        "task:S06"
+      ],
+      "expected_capabilities": [
+        "qveris_finance.ref_company_profile",
+        "qveris_finance.mkt_l1_rt"
+      ],
+      "web_evidence_policy": null,
+      "expected_web_evidence": [],
+      "bypassed_capabilities": [],
+      "acceptance_count": 1,
+      "machine_rule_ids": []
+    },
+    {
+      "task_id": "S06-O",
+      "comparison_task_id": "S06",
+      "task_class": "atomic",
+      "track": "open",
+      "source_refs": [
+        "section:5",
+        "task:S06"
+      ],
+      "expected_capabilities": [],
+      "web_evidence_policy": null,
+      "expected_web_evidence": [],
+      "bypassed_capabilities": [],
+      "acceptance_count": 1,
+      "machine_rule_ids": []
+    },
+    {
+      "task_id": "S07-Q",
+      "comparison_task_id": "S07",
+      "task_class": "atomic",
+      "track": "qveris",
+      "source_refs": [
+        "section:5",
+        "task:S07"
+      ],
+      "expected_capabilities": [
+        "qveris_finance.mkt_l1_rt"
+      ],
+      "web_evidence_policy": null,
+      "expected_web_evidence": [],
+      "bypassed_capabilities": [],
+      "acceptance_count": 2,
+      "machine_rule_ids": []
+    },
+    {
+      "task_id": "S07-O",
+      "comparison_task_id": "S07",
+      "task_class": "atomic",
+      "track": "open",
+      "source_refs": [
+        "section:5",
+        "task:S07"
+      ],
+      "expected_capabilities": [],
+      "web_evidence_policy": null,
+      "expected_web_evidence": [],
+      "bypassed_capabilities": [],
+      "acceptance_count": 2,
+      "machine_rule_ids": []
+    },
+    {
+      "task_id": "S08-Q",
+      "comparison_task_id": "S08",
+      "task_class": "atomic",
+      "track": "qveris",
+      "source_refs": [
+        "section:5",
+        "task:S08"
+      ],
+      "expected_capabilities": [
+        "qveris_finance.mkt_bars_adjusted"
+      ],
+      "web_evidence_policy": null,
+      "expected_web_evidence": [],
+      "bypassed_capabilities": [],
+      "acceptance_count": 2,
+      "machine_rule_ids": []
+    },
+    {
+      "task_id": "S08-O",
+      "comparison_task_id": "S08",
+      "task_class": "atomic",
+      "track": "open",
+      "source_refs": [
+        "section:5",
+        "task:S08"
+      ],
+      "expected_capabilities": [],
+      "web_evidence_policy": null,
+      "expected_web_evidence": [],
+      "bypassed_capabilities": [],
+      "acceptance_count": 2,
+      "machine_rule_ids": []
+    },
+    {
+      "task_id": "S09-Q",
+      "comparison_task_id": "S09",
+      "task_class": "atomic",
+      "track": "qveris",
+      "source_refs": [
+        "section:5",
+        "task:S09"
+      ],
+      "expected_capabilities": [
+        "qveris_finance.mkt_bars_adjusted"
+      ],
+      "web_evidence_policy": null,
+      "expected_web_evidence": [],
+      "bypassed_capabilities": [],
+      "acceptance_count": 1,
+      "machine_rule_ids": []
+    },
+    {
+      "task_id": "S09-O",
+      "comparison_task_id": "S09",
+      "task_class": "atomic",
+      "track": "open",
+      "source_refs": [
+        "section:5",
+        "task:S09"
+      ],
+      "expected_capabilities": [],
+      "web_evidence_policy": null,
+      "expected_web_evidence": [],
+      "bypassed_capabilities": [],
+      "acceptance_count": 1,
+      "machine_rule_ids": []
+    },
+    {
+      "task_id": "S10-Q",
+      "comparison_task_id": "S10",
+      "task_class": "atomic",
+      "track": "qveris",
+      "source_refs": [
+        "section:5",
+        "task:S10"
+      ],
+      "expected_capabilities": [
+        "qveris_finance.risk_beta_vol",
+        "qveris_finance.mkt_bars_adjusted"
+      ],
+      "web_evidence_policy": null,
+      "expected_web_evidence": [],
+      "bypassed_capabilities": [],
+      "acceptance_count": 1,
+      "machine_rule_ids": []
+    },
+    {
+      "task_id": "S10-O",
+      "comparison_task_id": "S10",
+      "task_class": "atomic",
+      "track": "open",
+      "source_refs": [
+        "section:5",
+        "task:S10"
+      ],
+      "expected_capabilities": [],
+      "web_evidence_policy": null,
+      "expected_web_evidence": [],
+      "bypassed_capabilities": [],
+      "acceptance_count": 1,
+      "machine_rule_ids": []
+    },
+    {
+      "task_id": "S11-Q",
+      "comparison_task_id": "S11",
+      "task_class": "atomic",
+      "track": "qveris",
+      "source_refs": [
+        "section:5",
+        "task:S11"
+      ],
+      "expected_capabilities": [
+        "qveris_finance.fundamentals_derived_ratios",
+        "qveris_finance.fundamentals_is",
+        "qveris_finance.fundamentals_bs"
+      ],
+      "web_evidence_policy": null,
+      "expected_web_evidence": [],
+      "bypassed_capabilities": [],
+      "acceptance_count": 2,
+      "machine_rule_ids": []
+    },
+    {
+      "task_id": "S11-O",
+      "comparison_task_id": "S11",
+      "task_class": "atomic",
+      "track": "open",
+      "source_refs": [
+        "section:5",
+        "task:S11"
+      ],
+      "expected_capabilities": [],
+      "web_evidence_policy": null,
+      "expected_web_evidence": [],
+      "bypassed_capabilities": [],
+      "acceptance_count": 2,
+      "machine_rule_ids": []
+    },
+    {
+      "task_id": "S12-Q",
+      "comparison_task_id": "S12",
+      "task_class": "atomic",
+      "track": "qveris",
+      "source_refs": [
+        "section:5",
+        "task:S12"
+      ],
+      "expected_capabilities": [
+        "qveris_finance.fundamentals_derived_ratios",
+        "qveris_finance.fundamentals_is",
+        "qveris_finance.fundamentals_bs"
+      ],
+      "web_evidence_policy": null,
+      "expected_web_evidence": [],
+      "bypassed_capabilities": [],
+      "acceptance_count": 1,
+      "machine_rule_ids": []
+    },
+    {
+      "task_id": "S12-O",
+      "comparison_task_id": "S12",
+      "task_class": "atomic",
+      "track": "open",
+      "source_refs": [
+        "section:5",
+        "task:S12"
+      ],
+      "expected_capabilities": [],
+      "web_evidence_policy": null,
+      "expected_web_evidence": [],
+      "bypassed_capabilities": [],
+      "acceptance_count": 1,
+      "machine_rule_ids": []
+    },
+    {
+      "task_id": "S13-Q",
+      "comparison_task_id": "S13",
+      "task_class": "atomic",
+      "track": "qveris",
+      "source_refs": [
+        "section:5",
+        "task:S13"
+      ],
+      "expected_capabilities": [
+        "qveris_finance.fundamentals_is",
+        "qveris_finance.fundamentals_bs",
+        "qveris_finance.fundamentals_cf"
+      ],
+      "web_evidence_policy": null,
+      "expected_web_evidence": [],
+      "bypassed_capabilities": [],
+      "acceptance_count": 2,
+      "machine_rule_ids": []
+    },
+    {
+      "task_id": "S13-O",
+      "comparison_task_id": "S13",
+      "task_class": "atomic",
+      "track": "open",
+      "source_refs": [
+        "section:5",
+        "task:S13"
+      ],
+      "expected_capabilities": [],
+      "web_evidence_policy": null,
+      "expected_web_evidence": [],
+      "bypassed_capabilities": [],
+      "acceptance_count": 2,
+      "machine_rule_ids": []
+    },
+    {
+      "task_id": "S14-Q",
+      "comparison_task_id": "S14",
+      "task_class": "atomic",
+      "track": "qveris",
+      "source_refs": [
+        "section:5",
+        "task:S14"
+      ],
+      "expected_capabilities": [
+        "qveris_finance.ref_classification_theme"
+      ],
+      "web_evidence_policy": null,
+      "expected_web_evidence": [],
+      "bypassed_capabilities": [],
+      "acceptance_count": 2,
+      "machine_rule_ids": []
+    },
+    {
+      "task_id": "S14-O",
+      "comparison_task_id": "S14",
+      "task_class": "atomic",
+      "track": "open",
+      "source_refs": [
+        "section:5",
+        "task:S14"
+      ],
+      "expected_capabilities": [],
+      "web_evidence_policy": null,
+      "expected_web_evidence": [],
+      "bypassed_capabilities": [],
+      "acceptance_count": 2,
+      "machine_rule_ids": []
+    },
+    {
+      "task_id": "S15-Q",
+      "comparison_task_id": "S15",
+      "task_class": "atomic",
+      "track": "qveris",
+      "source_refs": [
+        "section:5",
+        "task:S15"
+      ],
+      "expected_capabilities": [
+        "qveris_finance.ref_symbology"
+      ],
+      "web_evidence_policy": "web_news_sentiment_v1",
+      "expected_web_evidence": [
+        "issuer_news",
+        "qualitative_sentiment"
+      ],
+      "bypassed_capabilities": [
+        "qveris_finance.sentiment_text_signals",
+        "qveris_finance.news_fin_tagged"
+      ],
+      "acceptance_count": 3,
+      "machine_rule_ids": []
+    },
+    {
+      "task_id": "S15-O",
+      "comparison_task_id": "S15",
+      "task_class": "atomic",
+      "track": "open",
+      "source_refs": [
+        "section:5",
+        "task:S15"
+      ],
+      "expected_capabilities": [],
+      "web_evidence_policy": null,
+      "expected_web_evidence": [],
+      "bypassed_capabilities": [],
+      "acceptance_count": 3,
+      "machine_rule_ids": []
+    },
+    {
+      "task_id": "S16-Q",
+      "comparison_task_id": "S16",
+      "task_class": "atomic",
+      "track": "qveris",
+      "source_refs": [
+        "section:5",
+        "task:S16"
+      ],
+      "expected_capabilities": [
+        "qveris_finance.event_calendar_earnings"
+      ],
+      "web_evidence_policy": null,
+      "expected_web_evidence": [],
+      "bypassed_capabilities": [],
+      "acceptance_count": 2,
+      "machine_rule_ids": []
+    },
+    {
+      "task_id": "S16-O",
+      "comparison_task_id": "S16",
+      "task_class": "atomic",
+      "track": "open",
+      "source_refs": [
+        "section:5",
+        "task:S16"
+      ],
+      "expected_capabilities": [],
+      "web_evidence_policy": null,
+      "expected_web_evidence": [],
+      "bypassed_capabilities": [],
+      "acceptance_count": 2,
+      "machine_rule_ids": []
+    },
+    {
+      "task_id": "S17-Q",
+      "comparison_task_id": "S17",
+      "task_class": "atomic",
+      "track": "qveris",
+      "source_refs": [
+        "section:5",
+        "task:S17"
+      ],
+      "expected_capabilities": [
+        "qveris_finance.fundamentals_derived_ratios",
+        "qveris_finance.mkt_bars_adjusted"
+      ],
+      "web_evidence_policy": null,
+      "expected_web_evidence": [],
+      "bypassed_capabilities": [],
+      "acceptance_count": 2,
+      "machine_rule_ids": [
+        "ranking_denominator_contract"
+      ]
+    },
+    {
+      "task_id": "S17-O",
+      "comparison_task_id": "S17",
+      "task_class": "atomic",
+      "track": "open",
+      "source_refs": [
+        "section:5",
+        "task:S17"
+      ],
+      "expected_capabilities": [],
+      "web_evidence_policy": null,
+      "expected_web_evidence": [],
+      "bypassed_capabilities": [],
+      "acceptance_count": 2,
+      "machine_rule_ids": [
+        "ranking_denominator_contract"
+      ]
+    },
+    {
+      "task_id": "S18-Q",
+      "comparison_task_id": "S18",
+      "task_class": "atomic",
+      "track": "qveris",
+      "source_refs": [
+        "section:5",
+        "task:S18"
+      ],
+      "expected_capabilities": [
+        "qveris_finance.mkt_bars_adjusted"
+      ],
+      "web_evidence_policy": null,
+      "expected_web_evidence": [],
+      "bypassed_capabilities": [],
+      "acceptance_count": 2,
+      "machine_rule_ids": [
+        "post_evaluation_isolation"
+      ]
+    },
+    {
+      "task_id": "S18-O",
+      "comparison_task_id": "S18",
+      "task_class": "atomic",
+      "track": "open",
+      "source_refs": [
+        "section:5",
+        "task:S18"
+      ],
+      "expected_capabilities": [],
+      "web_evidence_policy": null,
+      "expected_web_evidence": [],
+      "bypassed_capabilities": [],
+      "acceptance_count": 2,
+      "machine_rule_ids": [
+        "post_evaluation_isolation"
+      ]
+    },
+    {
+      "task_id": "C01-Q",
+      "comparison_task_id": "C01",
+      "task_class": "workflow",
+      "track": "qveris",
+      "source_refs": [
+        "section:6",
+        "task:C01"
+      ],
+      "expected_capabilities": [
+        "qveris_finance.ref_symbology",
+        "qveris_finance.mkt_bars_adjusted",
+        "qveris_finance.fundamentals_derived_ratios"
+      ],
+      "web_evidence_policy": null,
+      "expected_web_evidence": [],
+      "bypassed_capabilities": [],
+      "acceptance_count": 1,
+      "machine_rule_ids": [
+        "ranking_denominator_contract"
+      ]
+    },
+    {
+      "task_id": "C01-O",
+      "comparison_task_id": "C01",
+      "task_class": "workflow",
+      "track": "open",
+      "source_refs": [
+        "section:6",
+        "task:C01"
+      ],
+      "expected_capabilities": [],
+      "web_evidence_policy": null,
+      "expected_web_evidence": [],
+      "bypassed_capabilities": [],
+      "acceptance_count": 1,
+      "machine_rule_ids": [
+        "ranking_denominator_contract"
+      ]
+    },
+    {
+      "task_id": "C02-Q",
+      "comparison_task_id": "C02",
+      "task_class": "workflow",
+      "track": "qveris",
+      "source_refs": [
+        "section:6",
+        "task:C02"
+      ],
+      "expected_capabilities": [
+        "qveris_finance.ref_symbology",
+        "qveris_finance.mkt_bars_adjusted",
+        "qveris_finance.fundamentals_derived_ratios"
+      ],
+      "web_evidence_policy": null,
+      "expected_web_evidence": [],
+      "bypassed_capabilities": [],
+      "acceptance_count": 2,
+      "machine_rule_ids": []
+    },
+    {
+      "task_id": "C02-O",
+      "comparison_task_id": "C02",
+      "task_class": "workflow",
+      "track": "open",
+      "source_refs": [
+        "section:6",
+        "task:C02"
+      ],
+      "expected_capabilities": [],
+      "web_evidence_policy": null,
+      "expected_web_evidence": [],
+      "bypassed_capabilities": [],
+      "acceptance_count": 2,
+      "machine_rule_ids": []
+    },
+    {
+      "task_id": "C03-Q",
+      "comparison_task_id": "C03",
+      "task_class": "workflow",
+      "track": "qveris",
+      "source_refs": [
+        "section:6",
+        "task:C03"
+      ],
+      "expected_capabilities": [
+        "qveris_finance.ref_classification_industry",
+        "qveris_finance.mkt_bars_adjusted",
+        "qveris_finance.fundamentals_derived_ratios"
+      ],
+      "web_evidence_policy": null,
+      "expected_web_evidence": [],
+      "bypassed_capabilities": [],
+      "acceptance_count": 2,
+      "machine_rule_ids": []
+    },
+    {
+      "task_id": "C03-O",
+      "comparison_task_id": "C03",
+      "task_class": "workflow",
+      "track": "open",
+      "source_refs": [
+        "section:6",
+        "task:C03"
+      ],
+      "expected_capabilities": [],
+      "web_evidence_policy": null,
+      "expected_web_evidence": [],
+      "bypassed_capabilities": [],
+      "acceptance_count": 2,
+      "machine_rule_ids": []
+    },
+    {
+      "task_id": "C04-Q",
+      "comparison_task_id": "C04",
+      "task_class": "workflow",
+      "track": "qveris",
+      "source_refs": [
+        "section:6",
+        "task:C04"
+      ],
+      "expected_capabilities": [
+        "qveris_finance.ref_symbology",
+        "qveris_finance.fundamentals_derived_ratios",
+        "qveris_finance.mkt_bars_adjusted"
+      ],
+      "web_evidence_policy": "web_news_sentiment_v1",
+      "expected_web_evidence": [
+        "qualitative_sentiment"
+      ],
+      "bypassed_capabilities": [
+        "qveris_finance.sentiment_text_signals"
+      ],
+      "acceptance_count": 3,
+      "machine_rule_ids": [
+        "missing_factor_contract"
+      ]
+    },
+    {
+      "task_id": "C04-O",
+      "comparison_task_id": "C04",
+      "task_class": "workflow",
+      "track": "open",
+      "source_refs": [
+        "section:6",
+        "task:C04"
+      ],
+      "expected_capabilities": [],
+      "web_evidence_policy": null,
+      "expected_web_evidence": [],
+      "bypassed_capabilities": [],
+      "acceptance_count": 3,
+      "machine_rule_ids": [
+        "missing_factor_contract"
+      ]
+    },
+    {
+      "task_id": "C05-Q",
+      "comparison_task_id": "C05",
+      "task_class": "workflow",
+      "track": "qveris",
+      "source_refs": [
+        "section:6",
+        "task:C05"
+      ],
+      "expected_capabilities": [
+        "qveris_finance.mkt_bars_adjusted"
+      ],
+      "web_evidence_policy": null,
+      "expected_web_evidence": [],
+      "bypassed_capabilities": [],
+      "acceptance_count": 3,
+      "machine_rule_ids": [
+        "post_evaluation_isolation"
+      ]
+    },
+    {
+      "task_id": "C05-O",
+      "comparison_task_id": "C05",
+      "task_class": "workflow",
+      "track": "open",
+      "source_refs": [
+        "section:6",
+        "task:C05"
+      ],
+      "expected_capabilities": [],
+      "web_evidence_policy": null,
+      "expected_web_evidence": [],
+      "bypassed_capabilities": [],
+      "acceptance_count": 3,
+      "machine_rule_ids": [
+        "post_evaluation_isolation"
+      ]
+    },
+    {
+      "task_id": "B01",
+      "comparison_task_id": "B01",
+      "task_class": "boundary",
+      "track": "qveris",
+      "source_refs": [
+        "section:7",
+        "task:B01"
+      ],
+      "expected_capabilities": [
+        "qveris_finance.ref_symbology"
+      ],
+      "web_evidence_policy": null,
+      "expected_web_evidence": [],
+      "bypassed_capabilities": [],
+      "acceptance_count": 1,
+      "machine_rule_ids": []
+    },
+    {
+      "task_id": "B02",
+      "comparison_task_id": "B02",
+      "task_class": "boundary",
+      "track": "qveris",
+      "source_refs": [
+        "section:7",
+        "task:B02"
+      ],
+      "expected_capabilities": [
+        "qveris_finance.mkt_bars_adjusted"
+      ],
+      "web_evidence_policy": null,
+      "expected_web_evidence": [],
+      "bypassed_capabilities": [],
+      "acceptance_count": 2,
+      "machine_rule_ids": []
+    },
+    {
+      "task_id": "B03",
+      "comparison_task_id": "B03",
+      "task_class": "boundary",
+      "track": "qveris",
+      "source_refs": [
+        "section:7",
+        "task:B03"
+      ],
+      "expected_capabilities": [
+        "qveris_finance.mkt_bars_adjusted"
+      ],
+      "web_evidence_policy": null,
+      "expected_web_evidence": [],
+      "bypassed_capabilities": [],
+      "acceptance_count": 2,
+      "machine_rule_ids": []
+    },
+    {
+      "task_id": "B04",
+      "comparison_task_id": "B04",
+      "task_class": "boundary",
+      "track": "qveris",
+      "source_refs": [
+        "section:7",
+        "task:B04"
+      ],
+      "expected_capabilities": [
+        "qveris_finance.fundamentals_derived_ratios"
+      ],
+      "web_evidence_policy": null,
+      "expected_web_evidence": [],
+      "bypassed_capabilities": [],
+      "acceptance_count": 1,
+      "machine_rule_ids": []
+    },
+    {
+      "task_id": "B05",
+      "comparison_task_id": "B05",
+      "task_class": "boundary",
+      "track": "qveris",
+      "source_refs": [
+        "section:7",
+        "task:B05"
+      ],
+      "expected_capabilities": [
+        "qveris_finance.fundamentals_derived_ratios"
+      ],
+      "web_evidence_policy": null,
+      "expected_web_evidence": [],
+      "bypassed_capabilities": [],
+      "acceptance_count": 2,
+      "machine_rule_ids": []
+    },
+    {
+      "task_id": "B06",
+      "comparison_task_id": "B06",
+      "task_class": "boundary",
+      "track": "qveris",
+      "source_refs": [
+        "section:7",
+        "task:B06"
+      ],
+      "expected_capabilities": [
+        "qveris_finance.fundamentals_derived_ratios"
+      ],
+      "web_evidence_policy": null,
+      "expected_web_evidence": [],
+      "bypassed_capabilities": [],
+      "acceptance_count": 2,
+      "machine_rule_ids": []
+    },
+    {
+      "task_id": "B07",
+      "comparison_task_id": "B07",
+      "task_class": "boundary",
+      "track": "qveris",
+      "source_refs": [
+        "section:7",
+        "task:B07"
+      ],
+      "expected_capabilities": [
+        "qveris_finance.ref_classification_theme"
+      ],
+      "web_evidence_policy": null,
+      "expected_web_evidence": [],
+      "bypassed_capabilities": [],
+      "acceptance_count": 2,
+      "machine_rule_ids": []
+    },
+    {
+      "task_id": "B08",
+      "comparison_task_id": "B08",
+      "task_class": "boundary",
+      "track": "qveris",
+      "source_refs": [
+        "section:7",
+        "task:B08"
+      ],
+      "expected_capabilities": [],
+      "web_evidence_policy": "web_news_sentiment_v1",
+      "expected_web_evidence": [
+        "issuer_news",
+        "qualitative_sentiment"
+      ],
+      "bypassed_capabilities": [
+        "qveris_finance.news_fin_tagged",
+        "qveris_finance.sentiment_text_signals"
+      ],
+      "acceptance_count": 3,
+      "machine_rule_ids": []
+    },
+    {
+      "task_id": "B09",
+      "comparison_task_id": "B09",
+      "task_class": "boundary",
+      "track": "qveris",
+      "source_refs": [
+        "section:7",
+        "task:B09"
+      ],
+      "expected_capabilities": [],
+      "web_evidence_policy": null,
+      "expected_web_evidence": [],
+      "bypassed_capabilities": [],
+      "acceptance_count": 3,
+      "machine_rule_ids": []
+    },
+    {
+      "task_id": "B10",
+      "comparison_task_id": "B10",
+      "task_class": "boundary",
+      "track": "qveris",
+      "source_refs": [
+        "section:7",
+        "task:B10"
+      ],
+      "expected_capabilities": [
+        "qveris_finance.mkt_bars_adjusted"
+      ],
+      "web_evidence_policy": null,
+      "expected_web_evidence": [],
+      "bypassed_capabilities": [],
+      "acceptance_count": 2,
+      "machine_rule_ids": []
+    },
+    {
+      "task_id": "B11",
+      "comparison_task_id": "B11",
+      "task_class": "boundary",
+      "track": "qveris",
+      "source_refs": [
+        "section:7",
+        "task:B11"
+      ],
+      "expected_capabilities": [],
+      "web_evidence_policy": null,
+      "expected_web_evidence": [],
+      "bypassed_capabilities": [],
+      "acceptance_count": 2,
+      "machine_rule_ids": []
+    }
+  ]
+}

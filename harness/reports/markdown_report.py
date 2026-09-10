@@ -1,0 +1,2 @@
+"""Markdown report generation placeholder."""
+

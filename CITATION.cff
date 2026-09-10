@@ -1,0 +1,14 @@
+cff-version: 1.2.0
+message: "If you use these benchmarks, cite the repository and the exact release."
+title: "QVeris Agent Benchmarks"
+type: software
+authors:
+  - name: "QVeris Agent Benchmarks contributors"
+repository-code: "https://github.com/QVerisAI/qveris-agent-benchmarks"
+url: "https://github.com/QVerisAI/qveris-agent-benchmarks"
+version: 0.1.0
+license: Apache-2.0
+keywords:
+  - agent evaluation
+  - benchmark
+  - QVeris

@@ -53,7 +53,9 @@ const remoteBranches = lines(
   git(["for-each-ref", "--format=%(refname:short)", "refs/remotes/origin"], {
     allowFailure: true,
   }),
-).filter((name) => name !== "origin/HEAD" && name !== "origin/main");
+).filter(
+  (name) => name !== "origin" && name !== "origin/HEAD" && name !== "origin/main",
+);
 const merged = new Set(
   lines(
     git(
@@ -65,7 +67,7 @@ const merged = new Set(
 const unmergedBranches = remoteBranches.filter((name) => !merged.has(name));
 const resultRoots = countRoots(tracked, "/results/");
 const reportFiles = tracked.filter(
-  (path) => path.startsWith("reports/") || path.includes("/reports/"),
+  (path) => path.startsWith("reports/") && path !== "reports/README.md",
 );
 const goldenOracleFiles = tracked.filter(
   (path) => /(^|\/)(goldens?|golden_set|oracles?)(\/|$)/u.test(path),

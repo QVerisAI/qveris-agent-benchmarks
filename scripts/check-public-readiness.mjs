@@ -19,6 +19,7 @@ const requiredFiles = [
   "docs/public-release-audit-2026-09-10.md",
   "docs/history-remediation-runbook.md",
   "docs/clean-snapshot-provenance.md",
+  "docs/release-approval-v0.1.0.md",
   "benchmarks/publication-manifest.json",
   "benchmarks/finance/qveris-finance-benchmark/DATA_CARD.md",
 ];

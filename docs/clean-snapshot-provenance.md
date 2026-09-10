@@ -28,3 +28,5 @@ The exact suite inventory and the current release gates are recorded in the
 [publication manifest](../benchmarks/publication-manifest.json). Candidate
 status means the material can be used for development and controlled
 evaluation; it is not a claim of independently validated leaderboard quality.
+The repository owner's licensing and publication decision is recorded in the
+[v0.1.0 release approval](release-approval-v0.1.0.md).

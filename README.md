@@ -15,11 +15,10 @@ The repository is designed to answer two questions:
 
 ## Project Status
 
-The repository is preparing for its first public release. The default branch
-contains seven Finance benchmark content roots backed by one shared Node
-execution and scoring engine. They are labeled **Candidate** because external
-reproduction and final human-review gates are still incomplete. Media and
-public-opinion suites are planned, not implemented.
+The repository's first public release contains seven Finance benchmark content
+roots backed by one shared Node execution and scoring engine. They are labeled
+**Candidate** because external reproduction and final human-review gates are
+still incomplete. Media and public-opinion suites are planned, not implemented.
 See the [benchmark catalog](benchmarks/README.md) and
 [open-source readiness checklist](docs/open-source-readiness.md). The
 [publication manifest](benchmarks/publication-manifest.json) records the exact

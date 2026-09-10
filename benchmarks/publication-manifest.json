@@ -5,7 +5,13 @@
     "source_snapshot_commit": "6d3966e413cb05601f52479838d3a6c27015eec8",
     "history_policy": "clean-single-root-snapshot"
   },
-  "release_status": "release-candidate",
+  "release_status": "approved",
+  "approval": {
+    "approved_at": "2026-09-10",
+    "scope": "public-repository-v0.1.0",
+    "software_license": "Apache-2.0",
+    "benchmark_content_license": "CC-BY-4.0"
+  },
   "publication_mode": "transparent-development",
   "task_count": 367,
   "suites": [
@@ -85,8 +91,5 @@
       "unreviewed-traces"
     ]
   },
-  "release_blockers": [
-    "licensing-authority-confirmation",
-    "public-visibility-owner-approval"
-  ]
+  "release_blockers": []
 }
